@@ -1,0 +1,9 @@
+package webkms.emp;
+
+import java.util.ArrayList;
+
+public class Department {
+	private int deptNo;
+	private String deptname;
+	private ArrayList<Employee> empList;
+}

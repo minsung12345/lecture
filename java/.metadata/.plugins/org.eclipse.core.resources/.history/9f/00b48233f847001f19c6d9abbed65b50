@@ -1,0 +1,14 @@
+package webkms;
+
+public class Rectangle extends Shape{
+	private String origin;
+	private double radius;
+	public Rectangle(String name, String color,
+			String origin,double radius) {
+		super(name, color);
+		this.origin;
+		this.radius;
+		
+	}
+	
+}

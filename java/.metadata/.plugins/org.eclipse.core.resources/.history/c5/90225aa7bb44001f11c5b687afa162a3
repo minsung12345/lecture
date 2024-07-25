@@ -1,0 +1,10 @@
+package webkms;
+
+public class ScoreV3Main {
+
+	public static void main(String[] args) {
+		Student st1 = new Student("24001", "홍길동", 80, 90,70);
+		System.out.println(st1.toString());
+	}
+
+}

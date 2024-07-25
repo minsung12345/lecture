@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let randomLotto = new Array(45);
+      for (let i = 0; i < randomLotto.length; i++) {
+        randomLotto[i] = i + 1;
+      }
+      let picked = new Array();
+      for (let i = 0; i < 6; i++) {
+        picked[i] = randomLotto.splice(
+          Math.floor(Math.random() * randomLotto.length),
+          1
+        );
+      }
+      window.onload = function () {
+        document.getElementById("lotto").innerHTML = picked;
+      };
+    </script>
+  </head>
+  <body></body>
+</html>

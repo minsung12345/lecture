@@ -1,0 +1,30 @@
+package webkms;
+
+import java.util.Arrays;
+
+public class Dealer {
+	public final static int CARD_NUM = 52;
+	private Card[] deck = new Card[CARD_NUM];
+	
+	//생성자
+	public Dealer() {
+		// 딜러 등장시 개봉하지 않은 카드를 들고 옴.
+		int cardIndex = 0;
+		for(int cardKind = 1; cardKind <= Card.KIND_MAX; cardKind++) {
+			for(int cardNum = 1; cardNum <= Card.NUMBER_MAX; cardNum++) {
+				this.cardDeck[cardIndex++] = new Card(cardKind, cardNum); 
+			}
+		}
+	}
+
+	public char[] displayCard() {
+		return "전체 카드 갯수 : " + this.cardDeck.length + ", [Cards] : " + Arrays.toString(this.cardDeck());
+		return null;
+	}
+
+	private long[] cardDeck() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

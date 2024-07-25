@@ -1,0 +1,9 @@
+package webkms;
+
+public class stuClass {
+	private int no; // 반번호
+	private String className; // 과정명
+	private Student[] stuList; // 
+	private int totalTot; // 학생 전체의 총점
+	private float totalAvg; // 평균
+}

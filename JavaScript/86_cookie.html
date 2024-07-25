@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function saveCookie() {
+        //쿠키이름=값;expires=쿠키만료일;(domain=도메인명;path=쿠키저장경로)
+        //UTC
+        let myCookie = "";
+        let now = new Date();
+        console.log(now);
+        // console.log(now.getSeconds());
+        // console.log(now.getSeconds() + 3);
+        now.setDate(now.getDate() + 1);
+        console.log(now.toUTCString());
+
+        myCookie = "myCook=kms;expires=" + now.toUTCString();
+        console.log(myCookie);
+
+        document.cookie = myCookie;
+
+        //만료일을 2분후
+        let now2 = new Date();
+        now2.setMinutes(now2.getMinutes() + 10);
+        let myCookie2 = "myCook2=cookie2;expires=" + now2.toUTCString();
+        document.cookie = myCookie2;
+      }
+
+      function readCookie() {
+        let cook = document.cookie;
+        console.log(cook);
+        console.log(typeof cook);
+        let cookArr = cook.split(";");
+        console.log(cookArr);
+
+        let isFind = false;
+        let searchName = "myCook3";
+
+        for (let i = 0; i < cookArr.length; i++) {
+          let cookName = cookArr[i].split("=")[0];
+          console.log(cookName);
+          if (cookName.trim()) {
+            isFind = true;
+            alert("찾았다: " + cookArr[i].split("=")[1]);
+          }
+        }
+        if (!isFind) {
+          alert("그런 쿠키 없습니다....feat.쿠키 먹고 싶다");
+        }
+      }
+      function delCookie() {
+        //삭제할 쿠키 : myCook
+        //삭제할 쿠키의 expires값을 현재 날짜, 시간으로 재설정하여 다시 저장한다.
+        let delName = "myCook";
+        let now = new Date();
+        let cookie = delName + "=;expires" + now.toUTCString();
+        document.cookie = cookie;
+      }
+    </script>
+  </head>
+  <body>
+    <input type="button" value="쿠키저장" onclick="saveCookie()" />
+    <input type="button" value="쿠키읽기" onclick="readCookie()" />
+    <input type="button" value="쿠키삭제" onclick="delCookie()" />
+  </body>
+</html>

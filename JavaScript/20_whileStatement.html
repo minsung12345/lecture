@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>반복문 : while</title>
+    <script>
+      let i = 0;
+      while (i < 5) {
+        //조건식이 참일 동안 반복할 수행할 문장(들)
+        console.log(i);
+        i++;
+      }
+      //1부터 7까지의 합을 while문을 이용해서 구해보자.
+      let v = 0;
+      i = 0;
+      while (i < 8) {
+        console.log((v += i));
+        i++;
+      }
+      //단을 입력받아 입력받은 단의 구구단을 출력 while문을 이용
+      i = 1;
+      const num = prompt("숫자를 입력하세요.");
+
+      while (i <= 9) {
+        document.write(`${num}*${i}=${num * i}`);
+        document.write("<br>");
+        i++;
+      }
+      //3*4 직사각형 별 그리기 (중첩 while문)
+      let j = 1;
+
+      while (j < 4) {
+        let x = 0;
+        while (x < 4) {
+          document.write("*");
+          x++;
+        }
+        document.write("<br>");
+
+        j++;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

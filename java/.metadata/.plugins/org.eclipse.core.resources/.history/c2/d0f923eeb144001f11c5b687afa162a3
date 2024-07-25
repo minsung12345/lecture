@@ -1,0 +1,14 @@
+package modifier;
+
+public class ConstMain {
+
+	public static void main(String[] args) {
+		int curReservUsers = 999;
+		reservation(curReservUsers++);
+	}
+
+	private static void reservation(int curReservUsers) {
+		System.out.println("예약자 수: "+curReservUsers);
+	}
+
+}

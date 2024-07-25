@@ -1,0 +1,15 @@
+package webkms;
+
+public class instanceCopyMain {
+
+	public static void main(String[] args) {
+		Student s1 = new Student("24001","홍길동",80,98,77);
+		s1.displayScroe();
+		
+		// ????? 복사
+		Student s2 = s1;
+		s2.setKor(0);
+		s1.displayScroe();
+	}
+
+}

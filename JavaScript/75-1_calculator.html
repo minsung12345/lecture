@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>초간단 계산기</title>
+    <script>
+
+        let expression = ""
+        function updateDisplay(value){
+            document.getElementById("display").innerHTML=value
+        }
+        function appendToExpression(value){
+            expression += value
+            updateDisplay(expression)
+        }
+        function calculateResult(){
+
+        }
+        function clearDisplay(){
+            expression = ""
+            updateDisplay(expression)
+        }
+
+function seven() { appendToExpression("7"); }
+    function eight() { appendToExpression("8"); }
+    function nine() { appendToExpression("9"); }
+    function divide() { appendToExpression("/"); }
+    function four() { appendToExpression("4"); }
+    function five() { appendToExpression("5"); }
+    function six() { appendToExpression("6"); }
+    function multiply() { appendToExpression("*"); }
+    function one() { appendToExpression("1"); }
+    function two() { appendToExpression("2"); }
+    function three() { appendToExpression("3"); }
+    function subtract() { appendToExpression("-"); }
+    function zero() { appendToExpression("0"); }
+    function Plus() { appendToExpression("+"); }
+    function equal() { calculateResult(); }
+    function reset() { clearDisplay(); }
+    </script>
+    <style>
+       
+    #calculator {
+      font-size: 100px;
+      text-align: center;
+    }
+    #display {
+      height: 120px;
+      vertical-align: middle;
+    }
+    td {
+      cursor: pointer;
+      padding: 20px;
+    }
+  </style>
+    </style>
+  </head>
+  <body>
+    <table border="1" id="calculator">
+      <tr>
+        <td colspan="4" id="display"></td>
+      </tr>
+      <tr>
+        <td onclick="seven()">7</td>
+        <td onclick="eight()">8</td>
+        <td onclick="nine()">9</td>
+        <td onclick="divide()">/</td>
+        <br />
+      </tr>
+      <tr>
+        <td onclick="four()">4</td>
+        <td onclick="five()">5</td>
+        <td onclick="six()">6</td>
+        <td onclick="multiply()">*</td>
+        <br />
+      </tr>
+      <tr>
+        <td onclick="one()">1</td>
+        <td onclick="two()">2</td>
+        <td onclick="three()">3</td>
+        <td onclick="subtract()">-</td>
+        <br />
+      </tr>
+      <tr>
+        <td onclick="Plus()">+</td>
+        <td onclick="zero()">0</td>
+        <td onclick="equal()">=</td>
+        <td onclick="reset()">C</td>
+      </tr>
+    </table>
+  </body>
+</html>

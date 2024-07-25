@@ -1,0 +1,38 @@
+package webkms;
+
+import java.util.Arrays;
+
+public class CardDealerMain {
+
+	public static void main(String[] args) {
+		String num[] = {"A","1","2","3","4","5","6","7","8","9","10","J","Q","K"};
+		String[] cards = cardsNum(num);
+		System.out.println(Arrays.toString(cards));
+//		shuffle(cards);
+//		pickCard(shuffle(cards));
+	}
+
+	private static String[] cardsNum(String num[]) {
+		String[] cards = new String[4 * num.length];
+		String[] suits = {"heart","clover","spade","diamond"};
+		int cnt = 0;
+		for(String suit : suits) {
+			for(String value:num) {
+				cards[cnt++] = suit + ": "+ value;
+			}
+		}
+		return cards;
+	}
+
+//	private static String[] shuffle(String cards[]) {
+//		Random rand = new Random();
+//		
+//		
+//		System.out.println(cards);
+//		return cards;
+//	}
+//	private static void pickCard(String[] strings) {
+//		
+//	}
+
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // 사용자에게 날짜를 입력받아,
+      // 현재 시간이 입력받은 날짜로부터
+      // 얼마나 지났는지 (며칠) 계산을 해보세요.
+      window.onload = function () {
+        console.log(getToday());
+        document.getElementsByTagName("input")[0].max = getToday();
+      };
+
+      function calDate() {
+        // 1) 사용자에게 입력받은 날짜 가져오기
+        console.log(document.getElementsByTagName("input")[0].value); // 2024-06-03
+
+        let userInput = document.getElementsByTagName("input")[0].value;
+        console.log(typeof userInput);
+        console.log(userInput == "");
+        if (!userInput) {
+          // 유저가 날짜를 선택하지 않은 경우
+          document.getElementById("result").innerHTML = `날짜를 선택해 주세요`;
+        } else {
+          // 2) 날짜 계산하기
+          let usersDate = new Date(userInput); // 유저가 입력한 날짜 객체 생성
+          console.log(typeof usersDate);
+          console.log(usersDate); // Mon Jun 03 2024 09:00:00 GMT+0900 (한국 표준시)
+
+          let now = new Date(); // 현재 날짜 객체 생성
+          console.log(now.toLocaleDateString());
+          console.log(now.toISOString());
+
+          console.log(now.getTime());
+
+          console.log(now.getTime() - usersDate.getTime());
+          console.log(now - usersDate);
+
+          let tmp = now.getTime() - usersDate.getTime();
+
+          // 3) "~일 지났습니다" 출력하기
+          let result = Math.floor(tmp / 1000 / 60 / 60 / 24);
+          console.log(result);
+
+          document.getElementById("result").innerHTML = `${result}일 지났습니다`;
+        }
+      }
+
+      function getToday() {
+        // input 태그에 max="2024-06-04"(오늘 날짜)를 설정
+        let today = "";
+        let todayDate = new Date();
+        let year = String(todayDate.getFullYear());
+        let month = String(todayDate.getMonth() + 1).padStart(2, "0");
+        let tdate = String(todayDate.getDate()).padStart(2, "0");
+        console.log(typeof year, typeof month, tdate);
+        console.log(year, month, tdate);
+        today = `${year}-${month}-${tdate}`;
+
+        return today;
+      }
+    </script>
+  </head>
+  <body>
+    <div id="calendar">
+      지정일을 입력하고, 확인버튼을 누르세요.
+      <input type="date" />
+      <button onclick="calDate();">확인</button>
+    </div>
+    <div id="result"></div>
+  </body>
+</html>

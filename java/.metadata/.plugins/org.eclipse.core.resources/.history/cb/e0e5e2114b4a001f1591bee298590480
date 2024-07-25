@@ -1,0 +1,13 @@
+package loosecoupling.ex;
+
+public class ParseMain {
+
+	public static void main(String[] args) {
+		ParseService service = new ParseService();
+		
+		String filename= "datadata.json";
+		System.out.println(filename.substring(filename.lastIndexOf(".")+1));
+		
+	}
+
+}

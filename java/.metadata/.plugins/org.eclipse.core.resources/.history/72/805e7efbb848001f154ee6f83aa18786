@@ -1,0 +1,9 @@
+package webkms;
+
+public class Tv extends Product{
+	Tv(String name, int price){
+		this.name = name;
+		this.price = price;
+	}
+	
+}

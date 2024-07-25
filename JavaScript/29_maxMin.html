@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>최대값, 최솟값</title>
+    <script>
+      // 1~100까지의 랜덤한 수 10개를 배열에 넣어두고
+      // 그 랜덤 수들 중에 max(최대값), min(최솟값)을 각각 구해
+      // 테이블로 출력하세요 (1행 10열)
+      // 단, max값은 빨간색, min값은 파란색
+      let maxNum = 0;
+      let minNum = 0;
+      let array = new Array(10);
+      for (let i = 0; i < array.length; i++) {
+        let randomNum = Math.floor(Math.random() * (100 - 1) + 1);
+        array[i] = randomNum;
+      }
+      maxNum = array[0];
+      for (let i = 1; i < array.length; i++) {
+        if (maxNum < array[i]) {
+          maxNum = array[i];
+        }
+      }
+      minNum = array[0];
+      for (let i = 1; i < array.length; i++) {
+        if (minNum > array[i]) {
+          minNum = array[i];
+        }
+      }
+
+      table = `<table border="1">`;
+      for (let i = 0; i < 1; i++) {
+        table += `<tr>`;
+        for (let j = 0; j < 10; j++) {
+          table += `<td>${array[j]}</td>`;
+        }
+        table += `</tr>`;
+      }
+      table += `</table>`;
+      document.write(table);
+      let tds = document.getElementsByTagName("td");
+      console.log(tds);
+      console.log(tds[0].innerHTML);
+      for (let td of tds) {
+        console.log(td);
+        if (maxNum == td.innerHTML) {
+          td.style.backgroundColor = "red";
+        } else if (minNum == td.innerHTML) {
+          td.style.backgroundColor = "blue";
+        }
+      }
+    </script>
+    <style>
+      td {
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body></body>
+</html>

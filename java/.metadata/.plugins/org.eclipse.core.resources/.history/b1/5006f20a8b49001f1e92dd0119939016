@@ -1,0 +1,55 @@
+package webkms.emp;
+
+public abstract class Employee {
+ private String empNo;
+ private String ename;
+ private int deptNo;
+ private int salary;
+
+ public Employee() {
+}
+ public Employee(String empNo, String ename, int deptNo, int salary){
+	 this.empNo = empNo;
+	 this.ename = ename;
+	 this.deptNo=deptNo;
+	 this.salary = salary;
+ }
+ 
+ public void setEmpNo(String empNo) {
+	this.empNo = empNo;
+}
+
+public void setEname(String ename) {
+	this.ename = ename;
+}
+
+public void setDeptNo(int deptNo) {
+	this.deptNo = deptNo;
+}
+
+
+public String getEmpNo() {
+	return empNo;
+}
+
+public String getEname() {
+	return ename;
+}
+
+public int getdeptNo() {
+	return deptNo;
+}
+
+//정규직과 알바직 사원의 급여 계산 방법이 다르므로 abstracte메서드로 만든다
+ public abstract int aclSalary();
+@Override
+public String toString() {
+	return "Employee [empNo=" + empNo + ", ename=" + ename + ", deptNo=" + deptNo + ", salary=" + salary + "]";
+}
+
+
+
+
+
+}
+

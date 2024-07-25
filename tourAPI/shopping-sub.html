@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/4e311c76e2.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/minsung/commonJS.js"></script>
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=da1c1606608811dffb177f71c48e6410"
+    ></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>1조 쇼핑페이지</title>
+
+    <script>
+      $(function () {
+        let contentId = getParameter("contentid");
+
+        if (contentId == null) {
+          location.href = "shopping-main.html";
+        } else {
+          getAdditional(contentId);
+          moreInformation(contentId);
+          getAdditionalImage(contentId);
+        }
+      });
+
+      function getAdditional(contentId) {
+        const mykey =
+          "UOk0mzKnyvPZItI1gFH4HCBAIOIeybNwNEhFXrgPUqn8QN9E8Ia6Q%2BrNetk80dYhl%2BI4IfwJ0mMWIXrlkW4a8w%3D%3D";
+        let baseUrl = `http://apis.data.go.kr/B551011/KorService1/detailCommon1?ServiceKey=${mykey}&contentTypeId=38&contentId=${contentId}&MobileOS=ETC&MobileApp=AppTest&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y`;
+        let url = `${baseUrl}&_type=json`;
+        $.ajax({
+          url: url,
+          type: "GET",
+          dataType: "json",
+          success: function (data) {
+            parsingJSON(data);
+          },
+          error: function () {
+            console.error("An error occurred.");
+          },
+          complete: function () {},
+        });
+      }
+
+      let val = 0;
+      function parsingJSON(json) {
+        val = json.response.body.items.item;
+        let firstImage = val[0].firstimage || "img/minsung/noimage.png";
+
+        let secondImage = "img/minsung/noimage.png";
+        let thirdImage = "img/minsung/noimage.png";
+
+        if (imgAdd && imgAdd.length == 1) {
+          secondImage = imgAdd[0].originimgurl;
+          thirdImage = "img/minsung/noimage.png";
+        } else if (imgAdd && imgAdd.length >= 2) {
+          secondImage = imgAdd[0].originimgurl;
+          thirdImage = imgAdd[1].originimgurl;
+        }
+
+        function getImageSource(imageUrl) {
+          return imageUrl.trim() !== "" ? imageUrl : "img/minsung/noimage.png";
+        }
+
+        let output = `<div class="card"style="width: 1300px; height: auto">
+
+  <div class="card-header">${val[0].title}</div>
+  <div class="card-body">
+    <div class="row">
+      <!-- Left Column: Images -->
+      <div class="col-md-4"style="width 40%">
+        <div id="demo" class="carousel slide" data-bs-ride="carousel" style="height: 400px; overflow: hidden;">
+          <!-- Carousel Indicators -->
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+          </div>
+          
+          <!-- Carousel Inner -->
+          <div class="carousel-inner" style="height: 100%; width: 100%">
+            <div class="carousel-item active">
+              <img src="${getImageSource(
+                firstImage
+              )}" alt="Image 1" class="d-block w-100 carousel-img">
+            </div>
+            <div class="carousel-item">
+              <img src="${getImageSource(
+                secondImage
+              )}" alt="Image 2" class="d-block w-100 carousel-img">
+            </div>
+            <div class="carousel-item">
+              <img src="${getImageSource(
+                thirdImage
+              )}" alt="Image 3" class="d-block w-100 carousel-img">
+            </div>
+          </div>
+          
+          <!-- Carousel Controls -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Right Column: Information -->
+      <div class="col-md-8" style="width 60%">
+        <div class="btn-group mb-3" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-secondary" onclick="updateTable('1')">기본정보</button>
+          <button type="button" class="btn btn-secondary" onclick="updateTable('2')">이용안내</button>
+          <button type="button" class="btn btn-secondary" onclick="updateTable('3')">지도보기</button>
+        </div>
+        
+        <!-- Table Wrapper -->
+        <div id="tableWrapper">
+          <table class="table" id="infoTable">
+            <tr><td style="width: 30%;">우편번호 : </td><td>${
+              val[0].zipcode
+            }</td></tr>
+            <tr><td>전화명 : </td><td>${val[0].telname}</td></tr>
+            <tr><td>전화번호 : </td><td>${val[0].tel}</td></tr>
+            <tr><td>주소 : </td><td>${val[0].addr1} ${val[0].addr2}</td></tr>
+          </table>
+        </div>
+        
+        <!-- Overview -->
+        <div id="outline" class="mt-3">개요 : ${val[0].overview}</div>
+        
+        <!-- Map Display -->
+        <div class="row mt-3">
+          <div id="map" style="width:100%; height:300px; display:none;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      `;
+
+        $("#output").html(output);
+      }
+
+      let play = 0;
+      function information(json) {
+        play = json.response.body.items.item;
+      }
+      let imgAdd = 0;
+      function imageAdd(json) {
+        imgAdd = json.response.body.items.item;
+      }
+      function getAdditionalImage(contentId) {
+        const mykey =
+          "UOk0mzKnyvPZItI1gFH4HCBAIOIeybNwNEhFXrgPUqn8QN9E8Ia6Q%2BrNetk80dYhl%2BI4IfwJ0mMWIXrlkW4a8w%3D%3D";
+        let url = `http://apis.data.go.kr/B551011/KorService1/detailImage1?MobileOS=ETC&MobileApp=AppTest&serviceKey=${mykey}&contentId=${contentId}&imageYN=Y&subImageYN=Y&_type=json`;
+        $.ajax({
+          url: url,
+          type: "GET",
+          dataType: "json",
+          success: function (data) {
+            imageAdd(data);
+          },
+          error: function () {
+            console.error("An error occurred.");
+          },
+          complete: function () {},
+        });
+      }
+
+      function moreInformation(contentId) {
+        const mykey =
+          "UOk0mzKnyvPZItI1gFH4HCBAIOIeybNwNEhFXrgPUqn8QN9E8Ia6Q%2BrNetk80dYhl%2BI4IfwJ0mMWIXrlkW4a8w%3D%3D";
+        let url = `http://apis.data.go.kr/B551011/KorService1/detailIntro1?MobileOS=ETC&MobileApp=AppTest&serviceKey=${mykey}&contentId=${contentId}&contentTypeId=38&_type=json`;
+        $.ajax({
+          url: url,
+          type: "GET",
+          dataType: "json",
+          success: function (data) {
+            information(data);
+          },
+          error: function () {
+            console.error("An error occurred.");
+          },
+          complete: function () {},
+        });
+      }
+
+      function updateTable(content) {
+        let tableContent = `<table class="table table-bordered">`;
+        if (content === "1") {
+          tableContent += `
+              <tr><td>우편번호 :</td><td>${val[0].zipcode}</td></tr>
+              <tr><td>전화명 :</td><td>${val[0].telname}</td></tr>
+              <tr><td>전화번호 :</td><td>${val[0].tel}</td></tr>
+              <tr><td>주소 : </td><td>${val[0].addr1} ${val[0].addr2}</td></tr>
+            `;
+        } else if (content === "2") {
+          tableContent += `
+              <tr><td>문의 및 안내 :</td><td>${play[0].infocentershopping}</td></tr>
+              <tr><td>판매 목록 :</td><td>${play[0].saleitem}</td></tr>
+              <tr><td>개방일/휴무 :</td><td>${play[0].opentime}/${play[0].restdateshopping}</td></tr>
+              <tr><td>주차요금 : </td><td>${play[0].parkingfee}</td></tr>
+            `;
+        } else if (content === "3") {
+          tableContent += `<table><tr><td>주소 : </td><td>${val[0].addr1} ${val[0].addr2}</td></tr></table>
+            `;
+        }
+        tableContent += `</table>`;
+        $("#infoTable").html(tableContent);
+
+        if (content === "3") {
+          $("#outline").hide();
+          $("#map").show();
+          initializeMap();
+        } else {
+          $("#map").hide();
+          $("#outline").show();
+        }
+      }
+
+      function initializeMap() {
+        var mapContainer = document.getElementById("map"); // 지도를 표시할 div
+        var mapOption = {
+          center: new kakao.maps.LatLng(val[0].mapy, val[0].mapx), // 지도의 중심좌표
+          level: 3, // 지도의 확대 레벨
+        };
+
+        var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+        // 마커가 표시될 위치입니다
+        var markerPosition = new kakao.maps.LatLng(val[0].mapy, val[0].mapx);
+
+        // 마커를 생성합니다
+        var marker = new kakao.maps.Marker({
+          position: markerPosition,
+        });
+
+        // 마커가 지도 위에 표시되도록 설정합니다
+        marker.setMap(map);
+      }
+    </script>
+
+    <style>
+      .topHeader {
+        background-image: url("img/minsung/shopping.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 200px;
+      }
+      h1 {
+        color: white;
+        font-size: 50px;
+        font-weight: bolder;
+      }
+      .loading {
+        display: none;
+      }
+      #morePage {
+        width: 200px;
+        margin-top: 20px;
+      }
+      #titleName {
+        width: 200px;
+        font-size: 40px;
+      }
+
+      .card-header {
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+        background-color: #f8f9fa;
+      }
+      #outline {
+        margin: 20px;
+        font-size: 20px;
+      }
+      .carousel-item img {
+        width: 100%;
+        height: 400px;
+      }
+      .shopping-title {
+        font-size: 100px;
+        line-height: 400px;
+      }
+      .carousel-item {
+        width: 100%;
+      }
+      .d-block {
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbarArea">
+      <div class="container-fluid fixed-top px-0">
+        <div class="container px-0">
+          <div class="topbar">
+            <div class="row align-items-center justify-content-center">
+              <div class="col-md-8"></div>
+              <div class="col-md-4">
+                <div
+                  class="topbar-icon d-flex align-items-center justify-content-end"
+                >
+                  <a href="#" class="btn-square text-white me-2"
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                  <a href="#" class="btn-square text-white me-2"
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                  <a href="#" class="btn-square text-white me-2"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                  <a href="#" class="btn-square text-white me-2"
+                    ><i class="fab fa-pinterest"></i
+                  ></a>
+                  <a href="#" class="btn-square text-white me-0"
+                    ><i class="fab fa-linkedin-in"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <nav class="navbar navbar-light bg-light navbar-expand-xl">
+            <a href="index.html" class="navbar-brand ms-3">
+              <h1 class="text-primary display-5">Goott01</h1>
+            </a>
+            <button
+              class="navbar-toggler py-2 px-3 me-3"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse"
+            >
+              <span class="fa fa-bars text-primary"></span>
+            </button>
+            <div class="collapse navbar-collapse bg-light" id="navbarCollapse">
+              <div class="navbar-nav ms-auto">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+
+                <div class="nav-item dropdown">
+                  <a
+                    href="#"
+                    class="nav-link dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    >Categories</a
+                  >
+                  <div class="dropdown-menu m-0 bg-secondary rounded-0">
+                    <a
+                      href="tourist-destination-main.html"
+                      class="dropdown-item"
+                      >tourist-destination</a
+                    >
+                    <a
+                      href="cultural-facilities-main.html"
+                      class="dropdown-item"
+                      >cultural-facilities</a
+                    >
+                    <a href="festival-main.html" class="dropdown-item"
+                      >festival</a
+                    >
+                    <a href="travel-course-main.html" class="dropdown-item"
+                      >travel-course</a
+                    >
+                    <a href="leisure-sports-main.html" class="dropdown-item"
+                      >leisure-sports</a
+                    >
+                    <a href="lodgment-main.html" class="dropdown-item"
+                      >lodgment</a
+                    >
+                    <a href="shopping-main.html" class="dropdown-item"
+                      >shopping</a
+                    >
+                    <a href="restaurant-main.html" class="dropdown-item"
+                      >restaurant</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                class="d-flex align-items-center flex-nowrap pt-xl-0"
+                style="margin-left: 15px"
+              >
+                <a
+                  href="favorite.html"
+                  class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3"
+                  >favorite</a
+                >
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div
+      class="p-5 bg-primary text-white text-center topHeader"
+      style="height: 400px"
+    >
+      <h1 class="shopping-title">쇼핑</h1>
+    </div>
+    <div class="input-group container mt-5 mb-3">
+      <div id="output"></div>
+    </div>
+    <div class="container mt-5">
+      <div id="tourInfo"></div>
+    </div>
+
+    <div class="mt-5 text-center">
+      <a href="shopping-main.html" class="btn btn-success" style="margin: 50px"
+        >목록으로</a
+      >
+    </div>
+
+    <div class="footerArea">
+      <div class="container-fluid footer bg-dark text-body py-5">
+        <div class="container py-5">
+          <div class="row g-5">
+            <div class="col-md-6 col-lg-6 col-xl-3">
+              <div class="footer-item d-flex flex-column">
+                <h4 class="mb-4 text-white">Members</h4>
+                <a href="#"
+                  ><i class="fas fa-angle-right me-2"></i> Junho Jang</a
+                >
+                <a href=""
+                  ><i class="fas fa-angle-right me-2"></i>
+                  Jingu Kang
+                </a>
+                <a href=""
+                  ><i class="fas fa-angle-right me-2"></i> Junbeom Kim</a
+                >
+                <a href=""
+                  ><i class="fas fa-angle-right me-2"></i>
+                  Minseong Kim
+                </a>
+                <a href=""
+                  ><i class="fas fa-angle-right me-2"></i>
+                  Hyunmyung Lee
+                </a>
+                <a href=""
+                  ><i class="fas fa-angle-right me-2"></i>
+                  Jeongheon Seok
+                </a>
+                <a href=""
+                  ><i class="fas fa-angle-right me-2"></i>
+                  Yongho Shin
+                </a>
+                <a href=""
+                  ><i class="fas fa-angle-right me-2"></i> Heesung Yoon</a
+                >
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+              <div class="footer-item d-flex flex-column">
+                <h4 class="mb-4 text-white">Project</h4>
+                <a href=""
+                  ><i class="fas fa-angle-right me-2"></i> 1st mini Project</a
+                >
+                <a href=""><i class="fas fa-angle-right me-2"></i> group1</a>
+                <a href=""
+                  ><i class="fas fa-angle-right me-2"></i> to Jul. 5, 2024<sup
+                    >th</sup
+                  ></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Copyright Start -->
+    <div class="copyrightArea">
+      <div class="container-fluid copyright py-4">
+        <div class="container">
+          <div class="row g-4 align-items-center">
+            <div class="col-md-4 text-center text-md-start mb-md-0">
+              <span class="text-body"
+                ><a href="#"
+                  ><i class="fas fa-copyright text-light me-2"></i>1st mini
+                  Project-group1</a
+                >, All right reserved.</span
+              >
+            </div>
+            <div class="col-md-4 text-center">
+              <div class="d-flex align-items-center justify-content-center">
+                <a href="#" class="btn-hover-color btn-square text-white me-2"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a href="#" class="btn-hover-color btn-square text-white me-2"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+                <a href="#" class="btn-hover-color btn-square text-white me-2"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <a href="#" class="btn-hover-color btn-square text-white me-2"
+                  ><i class="fab fa-pinterest"></i
+                ></a>
+                <a href="#" class="btn-hover-color btn-square text-white me-0"
+                  ><i class="fab fa-linkedin-in"></i
+                ></a>
+              </div>
+            </div>
+            <div class="col-md-4 text-center text-md-end text-body">
+              <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+              <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+              <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+              Designed By
+              <a class="border-bottom" href="https://htmlcodex.com"
+                >HTML Codex</a
+              >
+              Distributed By
+              <a class="border-bottom" href="https://themewagon.com"
+                >ThemeWagon</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Copyright End -->
+
+    <!-- Back to Top -->
+    <a
+      href="#"
+      class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"
+      ><i class="fa fa-arrow-up"></i
+    ></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+  </body>
+</html>

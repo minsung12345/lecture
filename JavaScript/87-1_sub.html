@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>공지사항 (팝업창)</title>
+    <script src="commonJS.js"></script>
+
+    <script>
+      // 유저가 checkbox에 체크를 했다면 => 쿠키를 남기고 닫기
+      // 유저가 checkbox에 체크하지 않았다면 => 그냥 닫기
+      function setCookie() {
+        let date = new Date();
+        date.setTime(date.getTime() + 1 * 24 * 60 * 60 * 1000); // 하루 후
+        document.cookie =
+          "hidePopup=true; expires=" + date.toUTCString() + "; path=/";
+      }
+      function closeNotice() {
+        // alert("a");
+        let chkBox = document.getElementById("closeChkBox");
+        console.log(chkBox.checked);
+        //체크박스가 체크가 되어있으면 chkBox.cheked == true
+        //체크박스가 체크가 안되어있으면 chkBox.cheked == false
+
+        if (chkBox.checked == true) {
+          // alert("!");
+          saveCookie("notice", "Y", 1);
+        }
+        window.close();
+      }
+    </script>
+  </head>
+  <body>
+    <div class="notice">
+      <h1>
+        공지사항
+        <div>쿠키를 열심히 공부해 봅시다.</div>
+        <div class="check"></div>
+      </h1>
+      <input type="checkbox" id="closeChkBox" />하루 동안 이 창 열지 않기
+      <div class="close">
+        <input type="button" value="닫기" onclick="closeNotice()" />
+      </div>
+    </div>
+  </body>
+</html>

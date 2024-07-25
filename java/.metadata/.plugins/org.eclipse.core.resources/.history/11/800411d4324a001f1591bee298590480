@@ -1,0 +1,6 @@
+package webkms;
+
+public class Camera {
+	void takePicture();
+	
+}

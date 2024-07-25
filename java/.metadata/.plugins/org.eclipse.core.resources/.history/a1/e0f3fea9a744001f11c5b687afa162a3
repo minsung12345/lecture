@@ -1,0 +1,16 @@
+package modifier;
+
+public class FinalLocalMain {
+//	int num1; // 멤버 변수
+	
+	
+	public static void main(String[] args) {
+		//지역변수
+		int num; // 지역변수는 초기화해야한다.
+		num = 10;
+		System.out.println(num);
+		num = 20;
+		System.out.println(num);
+	}
+
+}

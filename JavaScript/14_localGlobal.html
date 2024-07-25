@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>전역변수vs지역변수</title>
+    <script>
+      let data = 3;
+      data = 5;
+      if (data > 0) {
+        console.log("data", data);
+        let tmp = 7;
+        console.log("tmp", tmp);
+      }
+      //   console.log("tmp 중괄호 밖", tmp);
+      console.log("data 16번라인", data);
+    </script>
+  </head>
+  <body></body>
+</html>

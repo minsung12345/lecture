@@ -1,0 +1,24 @@
+package webkms;
+
+public class StuClass {
+	//멤버변수
+	
+	private int no; // 반번호
+	private String className; // 과정명
+	private Student[] stuList; // 
+	private int totalTot; // 학생 전체의 총점
+	private float totalAvg; // 평균
+	
+	public static final int STUDENT_COUNT = 3;
+	//생성자
+
+	public StuClass(int no, String className, Student[] stuList, int totalTot, float totalAvg) {
+		super();
+		this.no = no;
+		this.className = className;
+		this.stuList = stuList;
+		this.totalTot = totalTot;
+		this.totalAvg = totalAvg;
+	}
+	
+}

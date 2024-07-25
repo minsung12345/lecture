@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이벤트 핸들러</title>
+    <script>
+      function sayHello() {
+        alert("Hello!");
+      }
+      window.onload = function () {
+        let btn3 = document.getElementById("btn3");
+        console.log(btn3);
+        btn3.onclick = sayHello;
+        btn3.onclick = function () {
+          alert("butten3 clicked");
+        };
+
+        let btn4 = document.getElementById("btn4");
+        btn4.addEventListener("click", sayHi);
+
+        function sayHi() {
+          alert("Hi!");
+          document.getElementById("btn4").style.backgroundColor = "red";
+        }
+
+        btn4.addEventListener("click", function () {
+          console.log("btn4 clicked");
+        });
+
+        let btn5 = document.addEventListener("dblclick", sayHi);
+      };
+    </script>
+  </head>
+  <body>
+    <button onclick="alert()">버튼1</button>
+    <button onclick="sayHello()">버튼2</button>
+    <button id="btn3">버튼3</button>
+    <button id="btn4">버튼4</button>
+    <button id="btn5">버튼5</button>
+  </body>
+</html>

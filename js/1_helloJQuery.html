@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <title>Document</title>
+    <script>
+      //   window.onload = function () {
+      $(document).ready(function () {
+        $("h1").css("color", "blue");
+        $("h2").eq(0).css("color", "orange");
+        $("h2").eq(1).css("color", "green");
+
+        // $("div").click(function () {
+        //   //   alert("jquery 참 쉽나요?");
+        //   $(this).html("jquery");
+        // });
+        $(".small").mouseover(function () {
+          $(".big").show("fast");
+          //   $(".big").show("slow");
+        });
+        $(".small").mouseout(function () {
+          $(".big").hide(3000);
+        });
+      });
+
+      function myfunc() {
+        alert("hello");
+      }
+      function displayBig() {
+        document.getElementsByClassName("big")[0].style.display = "block";
+      }
+      function displaySm() {
+        document.getElementsByClassName("big")[0].style.display = "none";
+      }
+    </script>
+    <style>
+      .big {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hello, jQuery!</h1>
+    <h2>첫번째 h2</h2>
+    <h2>두번째 h2</h2>
+    <div onclick="myfunc();">
+      jQuery는 자바스크립트 코딩을 좀 더 빠르고 편하게 사용할 수 있도록 하는
+      라이브러리입니다.
+    </div>
+    <!-- <div>
+      <img
+        src="images/BMI.png"
+        width="50%"
+        onmouseover="displayBig();"
+        onmouseout="displaySm();"
+      />
+    </div> -->
+    <div><img src="images/BMI.png" alt="" class="big" /></div>
+    <div><img src="images/BMI.png" alt="" class="small" width="50%" /></div>
+  </body>
+</html>

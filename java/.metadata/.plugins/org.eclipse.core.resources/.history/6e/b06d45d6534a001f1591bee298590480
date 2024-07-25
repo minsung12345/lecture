@@ -1,0 +1,5 @@
+package webkms.loosecoupling.factory;
+
+public class ParseManager {
+
+}

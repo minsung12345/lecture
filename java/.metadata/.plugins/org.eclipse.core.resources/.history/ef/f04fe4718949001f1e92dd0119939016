@@ -1,0 +1,12 @@
+package webkms.emp;
+
+public class FullTimeEmployee extends Employee{
+	
+	public FullTimeEmployee(String empNo, String name, int deptNo, int salary) {
+		super(empNo, name, deptNo, salary);
+	}
+	@Override
+	public String toString() {
+		return getName()+"의 급여: "+getSalary()+"원";		
+	}
+}

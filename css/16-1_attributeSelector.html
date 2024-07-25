@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>속성 선택자</title>
+    <style>
+      a[target="_blank"] {
+        padding-right: 30px;
+        background: url(images/expend1.png) no-repeat right center;
+        background-size: 20px;
+      }
+      a[class~="button"] {
+        color: red;
+      }
+      a[href*="wiki"] {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li><a href="https://namu.wiki/w/HTML" target="_blank">html</a></li>
+      <li><a href="https://namu.wiki/w/CSS">css</a></li>
+      <li>
+        <a href="https://namu.wiki/w/JavaScript" class="button">javascript</a>
+      </li>
+      <li><a href="https://namu.wiki/w/jQuery">jquery</a></li>
+      <li><a href="https://namu.wiki/w/AJAX" class="button flot">ajax</a></li>
+    </ul>
+  </body>
+</html>

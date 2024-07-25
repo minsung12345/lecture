@@ -1,0 +1,7 @@
+package webkms.tightcoupling;
+
+import webkms.loosecoupling.ElectronicDevice;
+
+public interface Remotable {
+	void remoteControl(ElectronicDevice ed);
+}

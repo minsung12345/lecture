@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>display</title>
+    <style>
+      li {
+        display: inline;
+      }
+      #big {
+        display: none;
+        /* big를 가진 요소를 보이지 않도록 처리 */
+      }
+    </style>
+    <script>
+      function sizeUp() {
+        // console.log("sizeUp() 호출됨");
+        document.getElementById("big").style.display = "block";
+      }
+
+      function sizeDown() {
+        // alert("sizeDown() 호출됨");
+        document.getElementById("big").style.display = "none";
+      }
+    </script>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="#">manu1</a></li>
+        <li><a href="#">manu2</a></li>
+        <li><a href="#">manu3</a></li>
+        <li><a href="#">manu4</a></li>
+      </ul>
+    </nav>
+    <div class="small">
+      <img
+        src="images/banana.jpg"
+        width="100px"
+        onmouseover="sizeUp();"
+        onmouseout="sizeDown();"
+      />
+    </div>
+    <div id="big">
+      <img src="images/banana.jpg" alt="" />
+    </div>
+  </body>
+</html>

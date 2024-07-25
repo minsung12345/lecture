@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로또 번호 생성기</title>
+    <script>
+      //1~45까지의 랜덤한 정수를 6개 뽑아서 배열에 담는다.
+      // 단 , 중복은 허용하지 않는다.
+
+      //   function start() {
+      //     let LottoNum = new Array(6);
+      //     for (let i = 0; i < LottoNum.length; i++) {
+      //       array = Math.floor(Math.random() * 45) + 1;
+      //       LottoNum[i] = array;
+      //     }
+      //     for (let i = 0; i < LottoNum.length - 1; i++) {
+      //       for (let j = i + 1; j < LottoNum.length; j++) {
+      //         if (LottoNum[i] == LottoNum[j]) {
+      //           LottoNum = start();
+      //         }
+      //       }
+      //     }
+
+      //     document.write(LottoNum);
+      //   }
+
+      //   start();
+      //--------------------------------------------------
+      //   let randomLotto = new Array(45);
+      //   for (let i = 0; i < randomLotto.length; i++) {
+      //     randomLotto[i] = i + 1;
+      //   }
+      //   let picked = new Array();
+      //   for (let i = 0; i < 6; i++) {
+      //     picked[i] = randomLotto.splice(
+      //       Math.floor(Math.random() * randomLotto.length),
+      //       1
+      //     );
+      //   }
+      //   window.onload = function () {
+      //     document.getElementById("lotto").innerHTML = picked;
+      //   };
+
+      document.addEventListener("DOMContentLoaded", function () {
+        let lotto = new Array(6);
+        let tmp = 0;
+
+        for (let i = 0; i < lotto.length; i++) {
+          do {
+            tmp = Math.floor(Math.random() * 45) + 1;
+          } while (isDuplicate(tmp, lotto));
+          lotto[i] = tmp;
+        }
+
+        lotto = sortAsc(lotto);
+
+        console.log(lotto);
+
+        let divBox = "";
+        for (let i in lotto) {
+          let boxId = "box" + i;
+          console.log(boxId);
+
+          let color = pickColor(lotto[i]);
+
+          divBox += `<div class='box' id='${boxId}' style='background-color: ${color}'>${lotto[i]}</div>`;
+        }
+        document.getElementById("lotto").innerHTML = divBox;
+
+        function isDuplicate(num, array) {
+          for (let item of array) {
+            if (num === item) {
+              return true;
+            }
+          }
+          return false;
+        }
+
+        function pickColor(num) {
+          let color = "";
+          if (num >= 1 && num < 10) {
+            color = "yellow";
+          } else if (num >= 10 && num < 20) {
+            color = "lightblue";
+          } else if (num >= 20 && num < 30) {
+            color = "orange";
+          } else if (num >= 30 && num < 40) {
+            color = "gray";
+          } else {
+            color = "green";
+          }
+          return color;
+        }
+
+        function sortAsc(array) {
+          return array.sort((a, b) => a - b);
+        }
+      });
+    </script>
+    <style>
+      .box {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        margin: 5px;
+        border-radius: 50%;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>로또 추첨 번호</h1>
+      <div id="lotto"></div>
+    </div>
+  </body>
+</html>

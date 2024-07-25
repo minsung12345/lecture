@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>성적표 v3</title>
+    <script>
+      // 사용자에게 이름, 국어, 영어, 수학 점수를 입력받아, 총점 평균을 구하고,
+      // 학점을 구해 테이블로 출력하는 프로그램을 작성
+      // 1차원 배열을 이용하여 만드세요.
+      // let student = []
+      function insert() {
+        let stu = ["이름", "국어", "영어", "수학", "총점", "평균"];
+        student[0] = window.prompt("이름을 입력하세요");
+        student[1] = Number(prompt("국어 점수를 입력하세요"));
+        student[2] = Number(prompt("수학 점수를 입력하세요"));
+        student[3] = Number(prompt("영어 점수를 입력하세요"));
+        student[4] = student[1] + student[2] + student[3];
+        student[5] = student[4] / 3;
+        if (student[5] >= 90) {
+          student[6] = "A";
+        } else if (student[5] >= 80) {
+          student[6] = "B";
+        } else if (student[5] >= 70) {
+          student[6] = "C";
+        } else if (student[5] >= 60) {
+          student[6] = "D";
+        } else {
+          student[6] = "F";
+        }
+
+        document.write(`<table><tr>`);
+        for (let j = 0; j < student.length; j++) {
+          document.write(`<td>${student[j]}</td>`);
+        }
+        document.write(`</tr></table>`);
+      }
+    </script>
+  </head>
+  <body>
+    <input type="button" value="선택" onclick="insert()" />
+  </body>
+</html>

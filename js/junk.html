@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  </head>
+  <body>
+    <h1>스파이시 치킨버거</h1>
+    <div><img src="images/burger.png" alt="" /></div>
+    <h2>버거 토핑 추가 선택</h2>
+    <div>
+      <input type="checkbox" class="chkbx" data-value="2500" />통새우패티 토핑
+      추가
+    </div>
+    <div>
+      <input type="checkbox" class="chkbx" data-value="2500" />쇠고기패티 추가
+    </div>
+    <div>
+      <input type="checkbox" class="chkbx" data-value="1500" />머쉬룸 토핑 추가
+    </div>
+    <div>
+      <input type="checkbox" class="chkbx" data-value="1200" />베이컨 토핑 추가
+    </div>
+    <div></div>
+
+    <div>기본 가격 7000원</div>
+    <div>추가요금 +<span id="totalPrice"></span>원</div>
+    <script>
+      function updateTotalprice() {
+        let total = 0;
+        $(".chkbx:checked").each(function () {
+          total += parseInt($(this).data("value"));
+        });
+        $("#totalPrice").text(total);
+      }
+      $(".chkbx").click(function () {
+        if ($(this).prop("checked")) {
+          console.log($(this).data("value"));
+        } else {
+          console.log($(this).data("value"));
+        }
+        updateTotalprice();
+      });
+    </script>
+  </body>
+</html>

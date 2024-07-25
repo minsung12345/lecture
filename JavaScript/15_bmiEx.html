@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI 계산</title>
+    <script>
+      function bmiMeasurement() {
+        let height = document.getElementById("height").value;
+        let weight = document.getElementById("weight").value;
+        let result = "";
+        let BMI = (weight / ((height / 100) * (height / 100))).toFixed(2);
+        result = "";
+
+        if (BMI >= 35) {
+          result = "3단계비만";
+        } else if (BMI >= 30) {
+          result = "2단계비만";
+        } else if (BMI >= 25) {
+          result = "1단계비만";
+        } else if (BMI >= 23) {
+          result = "비만전단계";
+        } else if (BMI >= 18.5) {
+          result = "정 상";
+        } else {
+          result = "저체중";
+        }
+        document.getElementById("bmiResult").innerText = `BMI 지수 ${BMI}
+        비만도 결과: ${result}`;
+      }
+      function clearInput() {
+        // alert("!");
+        document.getElementById("height").value = "";
+        document.getElementById("weight").value = "";
+      }
+    </script>
+    <style>
+      #click {
+        width: 50px;
+        height: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>BMI 계산</h1>
+    <label for="height">신장: </label
+    ><input type="number" id="height" placeholder="키를 입력하세요." /><br />
+    <label for="height">체중: </label
+    ><input type="number" id="weight" placeholder="몸무게를 입력하세요." />
+    <div>
+      <input
+        type="button"
+        value="선택"
+        onclick="bmiMeasurement()"
+        id="click"
+        min="0"
+      />
+      <input
+        type="button"
+        value="지우기"
+        onclick="clearInput()"
+        id="click"
+        min="0"
+      />
+    </div>
+    <div id="bmiResult"></div>
+    <div><img src="images/BMI.png" alt="" /></div>
+  </body>
+</html>

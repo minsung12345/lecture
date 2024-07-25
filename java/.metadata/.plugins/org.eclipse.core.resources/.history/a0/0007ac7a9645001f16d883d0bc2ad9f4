@@ -1,0 +1,23 @@
+package Card;
+
+
+public class CardMain {
+
+	public static void main(String[] args) {
+		Dealer 주윤발 = new Dealer(); //딜러 생성
+		System.out.println("섞기 전 카드: ");
+		System.out.println(주윤발.displayCard());
+		
+		주윤발.shuffle();
+		System.out.println("섞은 후 카드: ");
+		System.out.println(주윤발.displayCard());
+		
+		//카드를 1장씩 지급
+		Card c = 주윤발.pickCard();
+		
+		
+		
+	}
+	
+
+}

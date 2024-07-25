@@ -1,0 +1,12 @@
+package webkms;
+
+public class ShapeMain {
+
+	public static void main(String[] args) {
+		
+		
+		Circle circle = new Circle("직각사각형","빨간색",7,8,3.14,3.33);
+		circle.display();
+	}
+
+}

@@ -1,0 +1,23 @@
+package webkms;
+
+public class ScoreV3Main {
+
+		private static void outputMenu() {
+			System.out.println("**********************************************");
+			System.out.println("**             성적표 V3                     **");
+			
+			System.out.println("**********************************************");
+			System.out.println("** 1. 반 생성                                 **");
+			System.out.println("** 2. 생성된 반에 학생 입력 (1번 부터 수행)         **");
+			System.out.println("** 3. 전체 학생 점수 출력                        **");
+			System.out.println("** 9. 종료                                    **");
+			System.out.println("**********************************************");
+			System.out.println("메뉴 번호 입력 >>>>");
+		}
+		public static void main(String[] args) {
+			boolean runBool = true;
+			while(runBoo) {
+				outputMenu();
+			}
+		}
+}

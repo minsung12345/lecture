@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>오늘 뭐 먹지?</title>
+    <script>
+      // window.onload = function(){
+      // 랜덤하게 메뉴를 추천해주는 프로그램 작성
+      // 1 ~ 7 사이의 랜덤한 수를 뽑아서, 그 수가
+      // 1 : 짜장면, 2 : 김치찌개, 3 : 돈까스, ..., 7: 라면
+      //
+      // 1) 난수를 생성
+      let randNum = 0;
+      randNum = Math.floor(Math.random() * 7) + 1;
+      let menuName = "";
+      let menuImg = "";
+      switch (randNum) {
+        case 1:
+          menuName = "짜장면";
+          menuImg = "images/jajangmyeon.png";
+          break;
+        case 2:
+          menuName = "김치찌개";
+          menuImg = "images/kimchi soup.png";
+          break;
+        case 3:
+          menuName = "돈까스";
+          menuImg = "images/pork cutlet.png";
+          break;
+        case 4:
+          menuName = "족발";
+          menuImg = "images/Pork feet.png";
+          break;
+        case 5:
+          menuName = "생선구이";
+          menuImg = "images/fish.png";
+          break;
+        case 6:
+          menuName = "불고기";
+          menuImg = "images/bulgogi.png";
+          break;
+        case 7:
+          menuName = "라면";
+          menuImg = "images/ramen.png";
+          break;
+      }
+      //0 이상 1미만의 실수 랜덤하게 생성
+
+      //1 ~ 7 사이의 랜덤한 수
+      //(Math.random(), Math.floor()를 이용)
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("foodName").innerText = menuName;
+        document.getElementById("foodImg").src = menuImg;
+        document.getElementById("foodImg").alt = menuName;
+      });
+      console.log(randNum);
+    </script>
+    <style>
+      .title {
+        text-align: center;
+        color: violet;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="title">오늘의 추천 메뉴</h1>
+    <div id="foodName"></div>
+    <div id="foodImgContainer">
+      <img id="foodImg" src="이미지경로포함한이름" alt="" />
+    </div>
+  </body>
+</html>

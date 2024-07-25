@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>홀수 짝수</title>
+    <script>
+      function start() {
+        let oddEven = Number(document.getElementById("oddEven").value);
+        let result = "";
+        switch (oddEven % 2) {
+          case 0:
+            result = "짝수";
+            break;
+          case 1:
+            result = "홀수";
+            break;
+          default: {
+            result = "다시 입력해주세요";
+          }
+        }
+        document.getElementById("outPut").innerHTML = `결과: ${result}`;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>홀짝</h1>
+    <input type="number" id="oddEven" placeholder="숫자를 입력하세요." />
+    <input type="button" value="입력" onclick="start()" id="click" />
+    <div id="outPut"></div>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+package webkms.emp;
+
+public class FullTimeEmployee extends Employee{
+
+	@Override
+	public int aclSalary() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+
+}

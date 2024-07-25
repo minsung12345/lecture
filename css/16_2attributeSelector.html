@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>속성 선택자</title>
+    <style>
+      ul {
+        list-style: none;
+      }
+      li {
+        display: inline-block;
+        /* margin: 10px; */
+      }
+      li a {
+        font-size: 13px;
+        text-decoration: none;
+      }
+      a[class|="US"] {
+        padding-left: 20px;
+        background: url(images/US.png) no-repeat, left, center;
+      }
+      a[class|="CN"] {
+        padding-left: 20px;
+        background: url(images/CN.png) no-repeat, left, center;
+      }
+      a[class|="JP"] {
+        padding-left: 20px;
+        background: url(images/JP.png) no-repeat left center;
+      }
+      a[title^="eng"] {
+        background-color: aquamarine;
+      }
+      a[title$="sh"] {
+        color: bisque;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>외국어 :</li>
+      <li><a href="#" class="US" title="english">영어</a></li>
+      <li><a href="#" class="CN">중국어</a></li>
+      <li><a href="#" class="JP">일본어</a></li>
+    </ul>
+  </body>
+</html>

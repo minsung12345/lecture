@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>중첩 for(for문 안에 다른 for문)</title>
+    <script>
+      for (let i = 0; i < 3; i++) {
+        document.write(`<br>`);
+        for (let j = 0; j <= 3; j++) {
+          document.write("*");
+        }
+      }
+      let count = 1;
+      let table = `<table border ='1'>`;
+      for (let i = 0; i < 4; i++) {
+        table += `<tr>`;
+        for (let j = 0; j < 3; j++) {
+          table += `<td>${count++}<td>`;
+        }
+        table += `</tr><br>`;
+      }
+      table += `</table>`;
+      document.write(`${table}`);
+      document.write(`<br>-----------------<br>`);
+      for (let i = 0; i < 5; i++) {
+        document.write(`<br>`);
+        for (let j = 0; j <= i; j++) {
+          document.write("*");
+        }
+      }
+      document.write(`<br>-----------------<br>`);
+      for (let i = 0; i < 5; i++) {
+        document.write(`<br>`);
+        for (let j = 5; j > i; j--) {
+          document.write("*");
+        }
+      }
+      document.write(`<br>-----------------<br>`);
+      for (let i = 0; i < 5; i++) {
+        for (let j = 5; j > i + 1; j--) {
+          document.write("&nbsp");
+        }
+        for (let k = 0; k < 2 * i + 1; k++) {
+          document.write("*");
+        }
+        document.write(`<br>`);
+      }
+      document.write(`<br>-----------------<br>`);
+      for (let i = 0; i < 5; i++) {
+        for (let j = 5; j > i + 1; j--) {
+          document.write("&nbsp");
+        }
+        for (let k = 0; k < 2 * i + 1; k++) {
+          document.write("*");
+        }
+        document.write(`<br>`);
+      }
+
+      for (let i = 1; i < 5; i++) {
+        for (let j = 0; j < i; j++) {
+          document.write("&nbsp");
+        }
+        for (let k = 0; k < 9 - 2 * i; k++) {
+          document.write("*");
+        }
+        document.write("<br>");
+      }
+    </script>
+  </head>
+  <body>
+    <!-- <table>
+      <tr>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+      </tr>
+    </table> -->
+  </body>
+</html>

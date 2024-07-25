@@ -1,0 +1,86 @@
+package webkms;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class ScoreV3Main {
+
+		private static int curSavedStudentCnt = 0;
+	
+		private static void outputMenu() {
+			System.out.println("**********************************************");
+			System.out.println("**             성적표 V3                     **");
+			
+			System.out.println("**********************************************");
+			System.out.println("** 1. 반 생성                                 **");
+			System.out.println("** 2. 생성된 반에 학생 입력 (1번 부터 수행)         **");
+			System.out.println("** 3. 전체 학생 점수 출력                        **");
+			System.out.println("** 9. 종료                                    **");
+			System.out.println("**********************************************");
+			System.out.println("메뉴 번호 입력 >>>>");
+		}
+		public static void main(String[] args) {
+			boolean runBool = true;
+			ScoreV3Main scoreV3 = new ScoreV3Main();
+			StuClass stuClass = null; //반객체 초기화
+			while(runBool) {
+				outputMenu();
+				Scanner sc = new Scanner(System.in);
+				int menu = sc.nextInt();
+				
+				switch (menu) {
+				case 1:
+					
+					System.out.println("반을 생성합니다...");
+					stuClass = scoreV3.createClass();
+					break;
+				case 2:
+					System.out.println("학생을 입력합니다...");
+					scoreV3.inputStudent(stuClass);
+					break;
+				case 3:
+					System.out.println("전체 학생 점수 출력합니다...");
+					outputStudentScore();
+					break;
+				case 9:
+					runBool = false;
+					break;
+				}
+			}
+		}
+		private static void outputStudentScore() {
+			// TODO Auto-generated method stub
+			
+		}
+		private void inputStudent(StuClass stuClass) {
+			//학생 입력
+			Scanner sc = new Scanner(System.in);
+			System.out.print("학생번호>>>");
+			String stuNo = sc.nextLine();
+			System.out.print("학생이름>>>");
+			String stuName = sc.nextLine();
+			System.out.print("국어점수>>>");
+			int kor = Integer.parseInt(sc.nextLine());
+			System.out.print("영어점수>>>");
+			int eng = Integer.parseInt(sc.nextLine());
+			System.out.print("수학점수>>>");
+			int math = Integer.parseInt(sc.nextLine());
+			
+			stuClass.addStudent(new Student(stuNo, stuName, kor, eng, math), curSavedStudentCnt);
+			curSavedStudentCnt++;
+		}
+		private StuClass createClass() {
+			Scanner sc = new Scanner(System.in);
+			System.out.print("반번호 입력 >>>");
+			int classNo = sc.nextInt();
+			sc.nextLine();
+			System.out.print("과정명 입력 >>>");
+			String className = sc.nextLine();
+			
+			StuClass c1 =new StuClass(classNo,className);
+			System.out.println(c1.toString());
+			System.out.println(Arrays.toString(c1.getStuList()));
+			
+			return c1;
+		}
+}

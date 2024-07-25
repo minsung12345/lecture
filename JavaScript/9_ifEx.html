@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>if문 연습</title>
+    <script>
+      // html, css, javascript 세 과목의 점수를 입력받아 평균을 구하고 평균이 60점 이상이고, 과목당 40점 이상이어야 합격
+      // 40점 미만 과목은 불합격.
+      // 합격 여부를 출력하세요.
+      let html_ex = Number(prompt("html 시험 점수를 입력하세요"));
+      let css_ex = Number(prompt("css 시험 점수를 입력하세요"));
+      let javascript_ex = Number(prompt("javascript 시험 점수를 입력하세요"));
+
+      let avg = (html_ex + css_ex + javascript_ex) / 3;
+      let pass_ex = "";
+      if (avg >= 60) {
+        if (html_ex < 40) {
+          pass_ex = "html 과락 불합격";
+        } else if (css_ex < 40) {
+          pass_ex = "css 과락 불합격";
+        } else if (javascript_ex < 40) {
+          pass_ex = "javascript 과락 불합격";
+        } else pass_ex = "합격입니다.";
+      } else pass_ex = "불합격입니다.";
+      console.log(avg);
+      console.log(pass_ex);
+      let output = `<table class ='score'><tr><td>html</td><td>css</td><td>javascript</td><td>평균</td><td>합격여부</td></tr>
+        <tr><td>${html_ex}</td><td>${css_ex}</td><td>${javascript_ex}</td><td>${avg}</td><td>${pass_ex}</td></tr></table>`;
+      document.write(output);
+    </script>
+    <style>
+      .score,
+      tr,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body></body>
+</html>

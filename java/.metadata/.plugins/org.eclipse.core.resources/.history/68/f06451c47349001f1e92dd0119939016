@@ -1,0 +1,16 @@
+package webkms.emp;
+
+public class PartTimeWorker extends Employee{
+	private int workingHours;
+	private int salaryTime;
+	public PartTimeWorker(int businessNum, String name, String department, int salaryTime,int workingHours) {
+		super(businessNum, name, department);
+		this.salaryTime = salaryTime;
+		this.workingHours =workingHours;
+	}
+	@Override
+	public String toString() {
+		return getName()+"의 급여는: "+getSalary()*workingHours+"원";	
+	}
+	
+}

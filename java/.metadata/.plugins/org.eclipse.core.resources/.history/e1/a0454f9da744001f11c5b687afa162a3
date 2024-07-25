@@ -1,0 +1,11 @@
+package modifier;
+
+public class FinalLocalMain {
+
+	public static void main(String[] args) {
+		//지역변수
+		int num;
+		
+	}
+
+}

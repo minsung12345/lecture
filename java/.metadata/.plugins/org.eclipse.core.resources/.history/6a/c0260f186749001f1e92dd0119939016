@@ -1,0 +1,11 @@
+package pet;
+
+import webkms.Pet;
+
+public class Cat extends Pet{
+
+	public Cat() {
+		
+	}
+	
+}

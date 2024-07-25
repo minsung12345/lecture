@@ -1,0 +1,9 @@
+package webkms;
+
+public class instanceCopyMain {
+
+	public static void main(String[] args) {
+		
+	}
+
+}

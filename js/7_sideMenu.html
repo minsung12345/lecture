@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/4e311c76e2.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+      $(document).ready(function () {
+        let burgerPrice = Number($("#burgerPrice").text());
+        console.log(burgerPrice);
+
+        $(".side-menu").change(function () {
+          calTotal();
+          console.log($(".side-menu:checked").length)
+        });
+        //모두 선택 체크박스
+        $("#selectAll").change(function () {
+          if ($(this).prop("checked")) {
+            $(".side-menu").prop("checked", true);
+          } else {
+            $(".side-menu").prop("checked", false);
+          }
+          calTotal();
+        });
+
+        function calTotal() {
+          let total = burgerPrice;
+          $(".side-menu").each(function (i, item) {
+            if ($(item).prop("checked")) {
+              let price = parseInt($(item).val());
+              //   console.log(price);
+              total += price;
+              updateSelectAll();
+            }
+          });
+          $("#totalPrice").text("총 가격: " + total + "원");
+        }
+        function updateSelectAll() {
+          let allChecked =
+            $(".side-menu").length === $(".side-menu:checked").length;
+          $("#selectAll").prop("checked", allChecked);
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <h1>
+      <i class="fas fa-hamburger"></i> 소고기 버거 세트<span id="burgerPrice"></span>
+        10000</span
+      >원
+    </h1>
+    <div><img src="images/burger.png" alt="" /></div>
+    <h2>토핑 추가</h2>
+    <input type="checkbox" id="shrimp" class="side-menu" value="2500" />
+    <label for="shrimp">통새우패티(+2500원)</label><br />
+    <input type="checkbox" id="beef" class="side-menu" value="2500" />
+    <label for="beef">쇠고기패티(+2500원)</label><br />
+    <input type="checkbox" id="mushroom" class="side-menu" value="2500" />
+    <label for="mushroom">버섯(+2500원)</label><br />
+    <input type="checkbox" id="bacon" class="side-menu" value="2500" />
+    <label for="bacon">베이컨(+2500원)</label>
+    <p id="totalPrice">총 가격</p>
+    <input type="checkbox" name="" id="selectAll" />
+    <label for="selectAll">모두 선택</label>
+  </body>
+</html>

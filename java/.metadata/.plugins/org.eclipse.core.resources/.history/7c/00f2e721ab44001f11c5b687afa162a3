@@ -1,0 +1,18 @@
+package modifier;
+
+public class FinalMain {
+
+	public static void main(String[] args) {
+		ConstrucInit ci1 = new ConstrucInit(10);
+		System.out.println(ci1.value);
+		//final을 필드에 사용할 경우, 생성자를 통해서 한번만 초기화될 수 있다.
+//		ci1.value = 20;
+		
+		ConstrucInit ci2 = new ConstrucInit(20);
+		System.out.println(ci2.value);
+		
+		
+		
+	}
+
+}

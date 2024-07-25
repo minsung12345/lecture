@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>가위바위보 게임</title>
+    <script>
+      // 승률 계산
+      let userWin = 0,
+        computerWin = 0,
+        tie = 0;
+      winRate = 0;
+
+      // 컴퓨터와 유저와의 가위바위보
+      // 컴퓨터 : 랜덤하게 가위(1), 바위(2), 보(3)를 낸다.
+      // 유저 : 가위, 바위, 보를 select해서 [선택]버튼 누른다.
+      // 결과를 출력하고, 승률도 출력한다.
+      function gameStart() {
+        alert("게임을 시작할까요?");
+
+        // console.log(document.getElementById("userSelectVal").value);
+        let users = document.getElementById("userSelectVal").value;
+        let computers = Math.floor(Math.random() * 3) + 1;
+        console.log(users, computers);
+        // 이미지 넣기
+        let images = ["Scissors.png", "rock.png", "Paper.png"];
+        document.getElementById("userImg").src = "images/" + images[users - 1];
+        document.getElementById("computerImg").src =
+          "images/" + images[computers - 1];
+
+        let result = "";
+        if (users == 1) {
+          if (computers == 1) {
+            result = "비겼습니다";
+            tie++;
+          } else if (computers == 2) {
+            result = "졌습니다.";
+            computerWin++;
+          } else {
+            result = "이겼습니다.";
+            userWin++;
+          }
+        } else if (users == 2) {
+          if (computers == 1) {
+            result = "이겼습니다.";
+            userWin++;
+          } else if (computers == 2) {
+            result = "비겼습니다.";
+            tie++;
+          } else {
+            result = "졌습니다.";
+            computerWin++;
+          }
+        } else {
+          if (computers == 1) {
+            result = "졌습니다.";
+            computerWin++;
+          } else if (computers == 2) {
+            result = "이겼습니다.";
+            userWin++;
+          } else {
+            result = "비겼습니다.";
+            tie++;
+          }
+        }
+        document.getElementById("result").innerText = result;
+        console.log("win,lose,tie", userWin, computerWin, tie);
+        winRate = Mate.round((userWin / (computerWin + tie + userWin)) * 100);
+        document.getElementById("winRate").innerHTML = `${winRate.toFixed(2)}%`;
+        document.getElementById("win").innerText = `${userWin}`;
+        document.getElementById("lose").innerHTML = `${computerWin}`;
+        document.getElementById("draw").innerHTML = `${tie}`;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>가위, 바위, 보!</h1>
+    <div class="userInput">
+      <select id="userSelectVal">
+        <option value="1">가위</option>
+        <option value="2">바위</option>
+        <option value="3">보</option>
+      </select>
+      <input type="button" value="선택" onclick="gameStart()" />
+    </div>
+    <table border="1">
+      <tr>
+        <td>USER</td>
+        <td>COMPUTER</td>
+      </tr>
+      <tr>
+        <td id="user"><img id="userImg" src="images/rock.png" alt="" /></td>
+        <td id="computer">
+          <img id="computerImg" src="images/Scissors.png" alt="" />
+        </td>
+      </tr>
+      <tr>
+        <td>게임 결과</td>
+        <td>전적</td>
+      </tr>
+      <tr>
+        <td id="result"></td>
+        <td>
+          <span>승: </span><span id="win">0</span>, 패:
+          <span id="lose">0</span>, 무: <span id="draw">0</span><br />
+          승률:
+          <span id="winRate">0.00%</span>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+package webkms;
+
+public class instanceCopyMain {
+
+	public static void main(String[] args) {
+		Student s1 = new Student("24001","홍길동",80,98,77);
+		s1.displayScroe();
+		
+		// ????? 복사
+		Student s2 = s1;
+		s2.setKor(0);
+		s1.displayScroe();
+		s2.displayScroe();
+		
+		//깊은 복사 (생성자를 통해서 깊은 복사)
+		Student originS3 = new Student("24002","둘리",80,98,77);
+		Student deepcopyS3 = new Student(originS3);
+	}
+
+}

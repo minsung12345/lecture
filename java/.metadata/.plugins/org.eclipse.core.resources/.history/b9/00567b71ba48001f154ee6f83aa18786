@@ -1,0 +1,14 @@
+package webkms;
+
+public class Moniter extends Product{
+
+	public Moniter() {
+		super("Moniter", 100000);
+	}
+
+	@Override
+	public void displayProduct() {
+		System.out.println(getName()+": "+getPrice()+"원");		
+	}
+	
+}

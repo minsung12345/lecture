@@ -1,0 +1,5 @@
+package webkms.inheritance.access.child;
+
+public class Child {
+
+}

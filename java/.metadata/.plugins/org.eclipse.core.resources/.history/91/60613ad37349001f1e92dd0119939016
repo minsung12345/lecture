@@ -1,0 +1,41 @@
+package webkms.emp;
+
+public class Employee {
+ private int businessNum;
+ private String name;
+ private String department;
+ protected int salary;
+
+ public Employee(int businessNum, String name, String department, int salary){
+	 this.businessNum = businessNum;
+	 this.name = name;
+	 this.department=department;
+	 this.salary = salary;
+ }
+
+public int getBusinessNum() {
+	return businessNum;
+}
+
+public String getName() {
+	return name;
+}
+
+public String getDepartment() {
+	return department;
+}
+
+public int getSalary() {
+	return salary;
+}
+
+@Override
+public String toString() {
+	return "Employee [businessNum=" + businessNum + ", name=" + name + ", department=" + department + ", salary="
+			+ salary + "]";
+}
+
+
+
+}
+

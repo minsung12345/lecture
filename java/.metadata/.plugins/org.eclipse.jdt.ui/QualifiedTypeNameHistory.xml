@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="snippet.ScannerEx1"/>
+    <fullyQualifiedTypeName name="java.lang.reflect.Array"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="javax.sound.midi.SysexMessage"/>
+    <fullyQualifiedTypeName name="javax.xml.crypto.Data"/>
+    <fullyQualifiedTypeName name="webkms.Card"/>
+    <fullyQualifiedTypeName name="modifier.FieldInit"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="webkms.Student"/>
+    <fullyQualifiedTypeName name="webkms.inheritance.basic2.Hybridcar"/>
+    <fullyQualifiedTypeName name="webkms.PublicProperty"/>
+    <fullyQualifiedTypeName name="webkms.casting.FireEngine"/>
+    <fullyQualifiedTypeName name="java.lang.Process"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="webkms.polymorph.instof.ParentA"/>
+    <fullyQualifiedTypeName name="webkms.polymorph.instof.Child"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="pet.Cat"/>
+    <fullyQualifiedTypeName name="javax.print.DocFlavor"/>
+    <fullyQualifiedTypeName name="pet.Dog"/>
+    <fullyQualifiedTypeName name="webkms.emp.Employee"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.security.Permissions"/>
+    <fullyQualifiedTypeName name="webkms.emp.FullTimeEmployee"/>
+    <fullyQualifiedTypeName name="webkms.emp.Department"/>
+</qualifiedTypeNameHistroy>

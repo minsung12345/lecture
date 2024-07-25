@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jquery를 이용하여 동적으로 행을 추가, 삭제하는 테이블 만들기</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+      //강사님이 알려주신 방법
+      $(function () {
+        // $(".addBtn").click(function () {
+        $("table").on("click", ".addBtn", function () {
+          let copyTr = $(this).parent().parent();
+          console.log(copyTr);
+          let newTr = copyTr.clone();
+          clearContents(newTr.children());
+          newTr.insertAfter(copyTr);
+
+          function clearContents(tdArr) {
+            $.each(tdArr, function (index, item) {
+              $(item).children().val("");
+            });
+          }
+        });
+
+        $("table").on("click", ".remBtn", function () {
+          if ($("tr").length > 2) {
+            $(this).parent().parent().remove();
+          } else {
+            alert("더 이상 삭제할 수 없습니다.");
+          }
+        });
+
+        $(".send").click(function () {
+          let data = new Array();
+          console.log($("tr").eq(1).children().eq(0).children().eq(0).val());
+          $("tr").each(function (i, e) {
+            let product = new Object();
+            //테이블의 헤드를 제외하고 값을 가져오자.
+            if (i > 0) {
+              //   let prodName = $(e).children().eq(0).children().eq(0).val();
+              //   let prodQty = $(e).children().eq(1).children().eq(0).val();
+              //   let prodPrice = $(e).children().eq(2).children().eq(0).val();
+              //   console.log(prodName, prodQty, prodPrice);
+
+              //   // product객체 속성에 값 부여
+              //   product.prodName = prodName;
+              //   product.prodQty = prodQty;
+              //   product.prodPrice = prodPrice;
+
+              //   console.log(product);
+              //   data.push(product);
+
+              $(e)
+                .children()
+                .each(function (ind, inputTd) {
+                  if (ind < 3) {
+                    console.log(ind, "------------------");
+                    console.log($(inputTd).children().attr("name"));
+                    product[$(inputTd).children().attr("name")] = $(inputTd)
+                      .children()
+                      .val();
+                  }
+                });
+              data.push(product);
+            }
+          }); //each()의 끝
+          console.log(data);
+          $("#jsonResult").html(JSON.stringify(data));
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>상품명</th>
+          <th>수량</th>
+          <th>가격</th>
+          <th>추가</th>
+          <th>삭제</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="text" name="prodName" id="" /></td>
+          <td><input type="text" name="prodQty" id="" /></td>
+          <td><input type="text" name="prodPrice" id="" /></td>
+          <td><button class="addBtn">+</button></td>
+          <td><button class="remBtn">-</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div><button class="send">전송</button></div>
+    <div id="jsonResult"></div>
+  </body>
+</html>

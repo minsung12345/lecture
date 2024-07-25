@@ -1,0 +1,9 @@
+package webkms.loosecoupling.factory;
+
+public class XmlParser {
+
+	public boolean parse() {
+		return false;
+	}
+
+}

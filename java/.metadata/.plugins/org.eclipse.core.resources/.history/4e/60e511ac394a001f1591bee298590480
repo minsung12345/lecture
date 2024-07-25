@@ -1,0 +1,6 @@
+package webkms.loosecoupling;
+
+public class RemoteMain {
+	Tv tv = new Tv("LG");
+	tv.powerOn();
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>화살표 함수 (arrow function)</title>
+    <script>
+      // 1) 함수 선언식
+      //   console.log(greeting());
+
+      //   function greeting() {
+      //     return "Hello!";
+      //   }
+
+      // 2) 함수 표현식
+      //   console.log(greeting()); // ERROR! - Cannot access 'greeting' before initialization
+      const greeting = function sayHi() {
+        return "Hi!";
+      };
+      console.log(greeting());
+
+      // 화살표 함수
+      //   function sayHello() {
+      //     return "Hello";
+      //   }
+
+      const func1 = () => "Hello";
+      console.log(func1());
+
+      //
+      const a = () => {};
+      const b = (x) => {};
+      const c = (x, y) => {};
+      const d = (x) => {
+        return 2 * x;
+      };
+      const e = (x) => 2 * x;
+      const f = (x) => {
+        console.log(2 * x);
+        return 2 * x;
+      };
+    </script>
+  </head>
+  <body></body>
+</html>

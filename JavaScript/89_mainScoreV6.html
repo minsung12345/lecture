@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>메인 성적</title>
+    <!-- 이름,국어,영어,수학 점수를 입력받아서 전송 -->
+    <script>
+      function send() {
+        let name = document.getElementById("name").value;
+        let kor = document.getElementById("kor").value;
+        let eng = document.getElementById("eng").value;
+        let math = document.getElementById("math").value;
+        console.log(name, kor, eng, math);
+
+        location.href = `89-1_sub.html?name=${name}&kor=${kor}&eng=${eng}&math=${math}`;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>점수 입력</h1>
+    <div>이름: <input type="text" name="" id="name" /></div>
+    <div>국어: <input type="text" name="" id="kor" /></div>
+    <div>영어: <input type="text" name="" id="eng" /></div>
+    <div>수학: <input type="text" name="" id="math" /></div>
+    <button onclick="send()">전송</button>
+  </body>
+</html>

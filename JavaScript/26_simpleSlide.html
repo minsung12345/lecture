@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>배열을 이용한 초간단 슬라이더 만들기</title>
+    <style>
+      #img-container {
+        position: relative;
+        width: 500px;
+        height: 400px;
+      }
+      #img-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      button {
+        margin: 23px;
+        width: 200px;
+        height: 50px;
+      }
+    </style>
+    <script>
+      let images = [
+        "images/Jajangmyeon.png",
+        "images/ramen.png",
+        "images/pork cutlet.png",
+        "images/kimchi soup.png",
+        "images/bulgogi.png",
+      ];
+      let imageIndex = 0;
+      let intervalID;
+      function prev() {
+        imageIndex = (imageIndex - 1 + images.length) % images.length;
+        document.querySelector("#img").src = images[imageIndex];
+      }
+
+      function next() {
+        imageIndex = (imageIndex + 1) % images.length;
+        document.querySelector("#img").src = images[imageIndex];
+      }
+      function auto() {
+        intervalID = window.setInterval(next, 1000);
+      }
+      function stopAuto() {
+        clearInterval(intervalID);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="img-container">
+      <img id="img" src="images/Jajangmyeon.png" alt="" />
+    </div>
+    <button onclick="prev();">이전</button>
+    <button onclick="next()">다음</button>
+    <button onclick="auto()">자동시작</button>
+    <button onclick="stopAuto()">자동정지</button>
+  </body>
+</html>

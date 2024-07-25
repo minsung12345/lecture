@@ -1,0 +1,17 @@
+package webkms.casting;
+
+public class CastingMain {
+
+	public static void main(String[] args) {
+		Car car = new Car();
+		car.drive();
+		
+		Car poly = new FireEngine(); // 업캐스팅 (자손타입 -> 부모타입)
+		poly.drive();
+		
+		FireEngine fireEngine = (FireEngine)car;
+		fireEngine.hoseWater();
+		
+	}
+
+}

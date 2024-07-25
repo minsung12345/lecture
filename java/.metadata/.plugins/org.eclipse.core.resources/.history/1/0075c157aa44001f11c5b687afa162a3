@@ -1,0 +1,12 @@
+package modifier;
+
+public class ConstructInit {
+	int value;
+	
+	
+	
+	public ConstructInit(int value) {
+		this.value = value;
+	}
+	
+}

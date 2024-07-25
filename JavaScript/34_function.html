@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>사용자 정의 함수의 기본 운용법</title>
+    <script>
+      //함수호출
+      addTwoNumbers(1, 2);
+      document.write("<br>");
+      sayHello();
+      document.write("<br>");
+
+      sayHi(5);
+      document.write("<br>");
+      addTwoNumbersWithReturnValue(3, 4);
+
+      //함수선언
+      function addTwoNumbers(num1, num2) {
+        document.write(num1 + num2);
+      }
+
+      function sayHello() {
+        document.write("Hello");
+      }
+      function sayHi(times) {
+        for (let i = 0; i < times; i++) {
+          document.write("Hi");
+        }
+      }
+      function addTwoNumbersWithReturnValue(num1, num2) {
+        //두 수를 더한 후, 반환
+        let result = num1 + num2;
+        return result;
+      }
+      function sumTwoNums(a, b = 20) {
+        console.log("sumTwoNums 함수 :", a, b, a + b);
+      }
+      sumTwoNums(10, 20);
+      function sumThree(a, b = 10, c = 30) {
+        console.log("sumThree 함수 :", a, b, c, a + b + c);
+      }
+      sumThree(20, 30);
+
+      let gNum = 100; //전역변수
+      console.log(test());
+      function test() {
+        let gNum = 200;
+        let lNum = 5;
+        console.log(lNum);
+        return gNum;
+      }
+      function myfunc() {
+        let lVar = "local";
+        console.log(lVar);
+        console.log(gVar);
+        function innerFunc() {
+          console.log(lVar);
+          let innerVar = "inner";
+        }
+        innerFunc();
+      }
+      let gVar = "global";
+      console.log(innerVar); // error : innerVar is not defined
+      myfunc(0);
+    </script>
+  </head>
+  <body></body>
+</html>

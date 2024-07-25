@@ -1,0 +1,12 @@
+package webkms.inheritance.basic2;
+
+public class Car {
+	public void startEngine() {
+		System.out.println("차를 시동겁니다.");
+	}
+	
+	public void accelerrate() {
+		System.out.println("차를 가속합니다.");
+	}
+	
+}

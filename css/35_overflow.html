@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Overflow 속성</title>
+    <style>
+      div.overflow {
+        width: 200px;
+        height: 200px;
+        background-color: aquamarine;
+        overflow: auto; /*스코롤바 생성*/
+        /* overflow: hidden; */
+      }
+      div.ellipse {
+        text-overflow: ellipsis;
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+        overflow: hidden;
+        white-space: pre;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="overflow">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
+      voluptate a laboriosam ullam ex. Nihil quis vero accusamus dignissimos id
+      nisi rerum totam, magni similique velit, eveniet quod temporibus illo!
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
+      molestiae totam eligendi molestias reprehenderit! Corporis voluptatibus
+      eius, ipsum quae maiores alias a perspiciatis, debitis voluptatum dolorem
+      inventore odit mollitia culpa?
+    </div>
+    <div class="ellipse">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel ipsam nihil
+      provident nemo debitis magnam laudantium nostrum quidem culpa cum,
+      voluptatibus sed alias, velit veniam incidunt, beatae esse dolore?
+      Eligendi!
+    </div>
+  </body>
+</html>

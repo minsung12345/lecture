@@ -1,0 +1,12 @@
+package webkms.inheritance.basic2;
+
+public class CarMain {
+
+	public static void main(String[] args) {
+		ElectricCar electricCar = new ElectricCar();
+		electricCar.startEngine();
+		electricCar.accelerrate();
+		electricCar.charge();
+	}
+
+}

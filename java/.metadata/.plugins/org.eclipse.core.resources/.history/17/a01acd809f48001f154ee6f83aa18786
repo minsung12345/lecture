@@ -1,0 +1,8 @@
+package webkms.Binding;
+
+public class BindingMain {
+
+	public static void main(String[] args) {
+	
+	}
+}

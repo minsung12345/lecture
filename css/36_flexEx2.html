@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/4e311c76e2.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 1024px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .icon {
+        width: 600px;
+        height: 600px;
+        background-color: violet;
+        color: antiquewhite;
+        display: flex;
+        justify-content: center;
+      }
+      .icon-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .icon-row__icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 25px;
+      }
+      .icon-row__icon i {
+        font-size: 45px;
+      }
+      .icon-row__icon span {
+        font-size: 20px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="icon">
+      <div class="icon-row">
+        <div class="icon-row__icon">
+          <i class="fa-solid fa-code-compare"></i><span>Compare</span>
+        </div>
+        <div class="icon-row__icon">
+          <i class="fa-solid fa-folder"></i><span>Folder</span>
+        </div>
+        <div class="icon-row__icon">
+          <i class="fa-solid fa-notdef"></i><span>Notdef</span>
+        </div>
+        <div class="icon-row__icon">
+          <i class="fa-solid fa-qrcode"></i><span>Qr-code</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+package webkms;
+
+public class Circle extends Shape{
+	private String origin;
+	private double height;
+	private double base;
+	
+	public Circle(String name, String color,
+			String origin, double height, double base) {
+		super(name,color);
+		this.origin =origin;
+		this.height= height;
+		this.base=base;
+		
+	}
+	public String display() {
+		return super.display() + ", 원점:" +origin +", 높이:"+height+", 밑변:"+base;
+	}
+	
+}

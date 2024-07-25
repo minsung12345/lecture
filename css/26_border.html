@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Border</title>
+    <style>
+      h1 {
+        border: 2px solid lightcoral;
+      }
+      p {
+        padding: 10px;
+        border: 3px dotted greenyellow;
+      }
+      img {
+        width: 300px;
+      }
+      #round {
+        border-radius: 50%;
+        border-radius: 300px;
+      }
+      .radius {
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+        border: 1px solid blue;
+      }
+      .rad1 {
+        border-radius: 100px 100px 0 0;
+        background-color: red;
+      }
+      .rad2 {
+        border-radius: 0 0 100px 100px;
+        background-color: blue;
+      }
+      .rad3 {
+        border-radius: 100px 0 0 0;
+      }
+      .rad4 {
+        border-radius: 0 0 100px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Border</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro alias
+      repellendus architecto quaerat adipisci, optio distinctio explicabo veniam
+      enim velit a corrupti consequuntur, mollitia reprehenderit quam
+      consequatur recusandae, in tempora?
+    </p>
+    <div class="img"><img id="round" src="images/rm.jpg" alt="" /></div>
+    <div class="radius rad1">radius1</div>
+    <div class="radius rad2">radius2</div>
+    <div class="radius rad3">radius3</div>
+    <div class="radius rad4">radius4</div>
+  </body>
+</html>

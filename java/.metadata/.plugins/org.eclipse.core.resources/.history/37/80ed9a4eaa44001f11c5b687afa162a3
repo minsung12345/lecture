@@ -1,0 +1,10 @@
+package modifier;
+
+public class FinalMain {
+
+	public static void main(String[] args) {
+		ConstrucInit ci1 = new ConstrucInit(10);
+		System.out.println(ci1.value);
+	}
+
+}

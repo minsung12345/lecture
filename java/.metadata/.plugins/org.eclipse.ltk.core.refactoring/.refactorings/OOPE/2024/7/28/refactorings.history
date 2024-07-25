@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;TvData.java&apos; to &apos;OOPE/src/webksy&apos;&#x0D;&#x0A;- Original project: &apos;OOPE&apos;&#x0D;&#x0A;- Destination element: &apos;OOPE/src/webksy&apos;&#x0D;&#x0A;- Original element: &apos;TvData.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src&lt;webksy" element1="/src&lt;{TvData.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1720764205648" units="1" version="1.0"/>
+</session>

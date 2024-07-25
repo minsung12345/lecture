@@ -1,0 +1,18 @@
+package webkms.loosecoupling.factory;
+
+public class ParseManager {
+	public static Parseable getParser(String fileName) {
+
+		String ext = fileName.substring(fileName.lastIndexOf(".")+1);
+		System.out.println("파일의 확장자 : " + ext);
+		
+		if(ext.equals("json")) {
+			JasonParser jsonParser = new JasonParser();
+		}else if (ext.equals("xml")) {
+			XmlParser xmlParser = new XmlParser();
+			
+		}else {
+			System.out.println("파서기가 없습니다.");
+		}
+	}
+}

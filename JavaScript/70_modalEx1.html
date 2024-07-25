@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>모달창</title>
+    <script>
+      window.onload = function () {
+        let modal = document.getElementById("myModel");
+        let closeBtn = document.getElementsByClassName("closeModal")[0];
+        closeBtn.onclick = function (e) {
+          modal.style;
+        };
+      };
+    </script>
+    <style>
+      .model {
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: gray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .model-content {
+        background-color: antiquewhite;
+        padding: 30px;
+        border: 3px solid orange;
+        width: 200px;
+      }
+      .closeModal {
+        font-size: 15px;
+        color: bisque;
+        float: right;
+      }
+
+      .closeModal:hover {
+        color: red;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius cumque
+          dolores accusantium hic doloribus atque, quas modi, fuga consequatur,
+          laborum nulla! Animi nisi perspiciatis atque officia accusamus aliquam
+          rerum ducimus! Lorem, ipsum dolor sit amet consectetur adipisicing
+          elit. Dolorum quisquam, doloremque fugit repellat exercitationem,
+          quaerat quae odio animi voluptatibus molestias odit sed, voluptas
+          incidunt saepe ea nesciunt earum. Eius, doloribus.
+        </p>
+      </div>
+    </div>
+    <div>
+      <div id="myModal" class="model">
+        <div class="model-content">
+          <span class="closeModel"><button>X</button></span>
+          <p>
+            여름 휴가 기간 동안 배송이 지연됨을 알려드립니다. 문제가 생기면
+            범준씨에게 알려주세요.....
+          </p>
+        </div>
+      </div>
+    </div>
+    <script>
+      function openModal() {
+        document.getElementById("myModal").style.display = "block";
+      }
+      document.querySelector(".container").addEventListener("click", openModal);
+    </script>
+  </body>
+</html>

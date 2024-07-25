@@ -1,0 +1,11 @@
+package webkms;
+
+public class ExMain {
+
+	public static void main(String[] args) {
+		PublicProperty property = new PublicProperty("민성", 35000);
+		
+		
+	}
+
+}

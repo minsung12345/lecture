@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>쿠키 main page</title>
+    <script src="commonJS.js"></script>
+    <script>
+      window.onload = function () {
+        // 체크한 유저인지 아닌지 판별해서
+        // 체크한 경우 팝업창을 띄우지 않는다.
+        console.log(readCookie("notice"));
+        if (readCookie("notice") !== "Y") {
+          window.open(
+            "87-1_sub.html",
+            "sub",
+            "top=200",
+            "left=200",
+            "width=600",
+            "height= 600"
+          );
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <h1>Main page</h1>
+  </body>
+</html>

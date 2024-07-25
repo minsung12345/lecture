@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        console.log(window.innerWidth, window.innerHeight);
+        console.log(window.scrollX, window.screenY);
+        const parentElt = document.querySelector(".parent");
+        // console.log(parentElt.innerWidth, parentElt.innerHeight);
+
+        setTimeout(function () {
+          //   window.scrollTo(0, 500);
+          // }, 1000);
+          //   window.scrollTo({ top: 100, left: 0, behavior: "smooth" });
+          parentElt.scrollTo({ top: 100, left: 0, behavior: "smooth" });
+        }, 1000);
+
+        const childElt = document.querySelector(".child");
+        console.log(parentElt.clientWidth, parentElt.clientHeight);
+
+        console.log(parentElt.offsetWidth, parentElt.offsetHeight);
+        const output = document.querySelector("#output");
+        parentElt.addEventListener("scroll", function (e) {
+          output.textContent = `scrollTop : ${parentElt.scrollTop}`;
+        });
+      };
+    </script>
+    <style>
+      body {
+        height: 1000px;
+        padding: 500px 0;
+      }
+      .parent {
+        width: 300px;
+        height: 200px;
+        margin-top: 1000px;
+        padding: 20px;
+        overflow: auto;
+        border: 10px solid;
+      }
+      .child {
+        height: 100px;
+        margin-top: 100px;
+        border: 10px solid crimson;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parent">
+      <div class="child">content-1</div>
+      <div class="child">content-2</div>
+    </div>
+    <div id="output"></div>
+  </body>
+</html>

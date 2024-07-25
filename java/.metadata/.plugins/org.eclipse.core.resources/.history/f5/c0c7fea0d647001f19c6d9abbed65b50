@@ -1,0 +1,10 @@
+package webkms.inheritance.super1;
+
+public class SuperEx1Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

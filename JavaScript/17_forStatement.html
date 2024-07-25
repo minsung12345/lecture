@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>반복문 : for</title>
+    <script>
+      for (let i = 0; i <= 4; i++) {
+        // i = 0,1,2,3,4
+        document.write(`${i}번째<br/>`);
+      }
+      document.write("------------<br/>");
+      for (let i = 0; i < 5; i += 2) {
+        document.write(`${i}번째<br/>`);
+      }
+      let outputList = "<ul>";
+      for (let i = 1; i <= 5; i++) {
+        outputList += `<li>${i}</li>`;
+      }
+      outputList += "</ul>";
+      document.write(outputList);
+
+      //연습문제) 테이블 4행 3열 만드세요. (for문 1번만 사용), td태그 안에 0부터 1씩 증가하는 숫자가 들어가도록 하세요.
+      let result = "<table id='Ex'>";
+      for (let i = 0; i < 12; i += 3) {
+        let table = `<tr>
+              <td id='Ex'>${i}</td>
+              <td id='Ex'>${i + 1}</td>
+              <td id='Ex'>${i + 2}</br></td>
+            </tr>`;
+        result += table;
+      }
+      result += "</table>";
+      document.write(result);
+
+      // 1부터 100까지 합을 구하세요
+      let cnt = 0;
+      for (let i = 1; i <= 100; i++) {
+        cnt += i;
+      }
+      document.write(cnt);
+      // 1에서 100까지의 짝수합, 홀수합
+      let odd = 0,
+        even = 0;
+      for (let i = 1; i <= 100; i++) {
+        if (i % 2 == 0) {
+          even += i;
+        } else {
+          odd += i;
+        }
+      }
+      document.write("<br>------------------------------<br>");
+      document.write(
+        `                  홀수의 합: ${odd}<br>짝수의 합:  ${even}`
+      );
+      document.write("<br>------------------------------<br>");
+      //사용자에게 단을 입력받아, 해당하는 단의 구구단을 화면에 출력하세요
+      let gugudan = Number(window.prompt("숫자를 입력하세요."));
+      let gugudanResult;
+      for (let i = 1; i <= 9; i++) {
+        let gugudanResult = gugudan * i;
+        document.write(`${gugudan}*${i}= ${gugudanResult}<br>`);
+      }
+    </script>
+    <style>
+      #Ex {
+        border: 2px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+  </body>
+</html>

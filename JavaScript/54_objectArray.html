@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="js/account.js"></script>
+    <title>배열에 객체를 담아 관리</title>
+    <script>
+      let acc1 = new Account("홍길동", "1111-023-04-56789", 500);
+      console.log(acc1);
+
+      let acc2 = new Account("둘리", "1111-023-04-56777", 1000);
+      console.log(acc2);
+
+      let clients = [];
+      // let clients = new Array(1000);
+      clients.push(acc1);
+      clients.push(acc2);
+      console.log(clients);
+
+      // 고객의 명단을 list로 화면에 출력하세요 (이름, 계좌번호, 잔액)
+      let output = "<ul>";
+      for (let client of clients) {
+        console.log(client);
+        output += `<li>예금주 : ${client.owner}, 계좌번호 : ${client.accNum}, 잔액: ${client.balance}</li>`;
+      }
+      output += "</ul>";
+      console.log(output);
+
+      // document.write(output);
+
+      // JSON
+      document.write(JSON.stringify(clients));
+      let jsonStr = JSON.stringify(clients);
+      console.log(typeof jsonStr);
+
+      let jsonObj = JSON.parse(jsonStr);
+      console.log(typeof jsonObj);
+      console.log(jsonObj);
+    </script>
+  </head>
+  <body></body>
+</html>

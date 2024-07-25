@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>의사 (기상) 클래스 선택자</title>
+    <style>
+      /* :link(방문하지 않은 링크에 스타일 적용)
+        :visited(방문한 링크에 스타일 적용)
+        :hover (특정 요소에 마우스 포인터를 올려놓으면 스타일 적용)
+        :active (특정 요소에 클릭하는 순간 스타일 적용)
+        :focus (웹 요소에 초점이 맞춰졌을때) */
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: violet;
+      }
+      .box:hover {
+        width: 300px;
+        height: 300px;
+        background-color: aqua;
+        transition: 1s;
+      }
+
+      li:hover {
+        /* li마우스 포인터를 올리면 */
+        background-color: red;
+      }
+      a:visited {
+        /* 방문했던 페이지 */
+        color: yellow;
+      }
+      a:active {
+        color: brown;
+      }
+      a {
+        /* 하이퍼링크의 밑줄없애기 */
+        text-decoration: none;
+      }
+      /* 홀수 번째 li요소에 적용 (2n + 1 도 마찬가지)*/
+      .firstUl li:nth-child(2n + 1) {
+        border: 1px dotted brown;
+      }
+      /* 짝수 번째 li요소에 적용  (2n도 마찬가지)*/
+      /* .firstUl li:nth-child(even) {
+        border: 1px dotted red;
+      } */
+      input:focus {
+        background-color: steelblue;
+      }
+      input:checked + label {
+        color: chartreuse;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <div><input type="text" /></div>
+    <h1>Web Front 기술</h1>
+    <ul class="firstUl">
+      <li><a href="https://namu.wiki/w/HTML">html</a></li>
+      <li><a href="https://namu.wiki/w/CSS">css</a></li>
+      <li><a href="https://namu.wiki/w/JavaScript">javascript</a></li>
+      <li><a href="https://namu.wiki/w/jQuery">jquery</a></li>
+      <li><a href="https://namu.wiki/w/AJAX">ajax</a></li>
+    </ul>
+    <ul>
+      <li>
+        <input type="radio" id="famale" name="gender" />
+        <label for="famale">여성</label>
+      </li>
+      <li>
+        <input type="radio" id="male" name="gender" checked; />
+        <label for="male">남성</label>
+      </li>
+    </ul>
+  </body>
+</html>

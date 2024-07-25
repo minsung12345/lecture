@@ -1,0 +1,7 @@
+package webkms.tightcoupling;
+
+public class Tv {
+	public void powerOn() {
+		System.out.println("Tv가 켜집니다.");
+	}
+}

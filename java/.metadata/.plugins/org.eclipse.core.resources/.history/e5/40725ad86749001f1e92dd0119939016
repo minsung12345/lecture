@@ -1,0 +1,21 @@
+package webkms;
+
+import pet.Cat;
+import pet.Dog;
+
+public class PetMain {
+
+	public static void main(String[] args) {
+
+		Dog mydog = new Dog() {
+		};
+		System.out.println(mydog.toString());
+		mydog.doCry();
+		mydog.doWag();
+		
+		Cat myCat = new Cat("나비", "샴", 2);
+		
+		
+	}
+
+}

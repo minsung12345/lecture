@@ -1,0 +1,11 @@
+package webkms.emp;
+
+public class EmployeeMain {
+
+	public static void main(String[] args) {
+		FullTimeEmployee full = new FullTimeEmployee(1801126,"김민성","구트아카데미",800000);
+		System.out.println(FullTimeEmployee.toString());
+		
+	}
+
+}

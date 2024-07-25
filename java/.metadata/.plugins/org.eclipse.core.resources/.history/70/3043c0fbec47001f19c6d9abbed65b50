@@ -1,0 +1,9 @@
+package webkms;
+
+public class PublicProperty {
+	
+
+	public void PublicProperty(String name, int price) {
+		System.out.println("상품의 이름: "+ name + ", 상품의 가격: "+ price);
+	}
+}

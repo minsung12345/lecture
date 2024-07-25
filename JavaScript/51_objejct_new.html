@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>사용자 정의 객체</title>
+    <script>
+      let account = new Object();
+      console.log(typeof account);
+      console.log(account);
+
+      // account 객체에 속성을 부여해보자.
+      account.owner = "홍길동"; // 예금주
+      account.accNum = "1111-222-33-45677"; // 계좌번호
+      account.balance = 500; // 잔액
+      account.name = "직장인 비과세 예금"; // 금융상품 이름
+      account.bankName = "우리은행"; // 은행이름
+
+      // [] 이용해서 속성 부여
+      account["no"] = "123456";
+      let accNo = "no";
+      account[accNo] = "98765";
+      console.log(account);
+
+      console.log(account.name);
+
+      document.write(`예금주 : ${account.owner} <br />`);
+      document.write(`계좌번호 : ${account.accNum} <br />`);
+      document.write(`잔액 : ${account.balance}원 <br />`);
+
+      // 예금하기, 인출하기, 잔액조회하기 -> 기능 (메서드)을 부여할 수 있다.
+      account.deposit = saveMoney;
+      console.log(account.deposit);
+      // console.log(account.deposit());
+      console.log(saveMoney);
+
+      account.deposit(3000000);
+      account.deposit(1000000);
+      console.log(account);
+
+      // 잔액조회하기
+      account.checkBalance = inquiery;
+      console.log(account.checkBalance());
+      console.log(account.balance);
+
+      // 인출하기
+      // account.withDraw = withDraw;
+      account.withDraw = function withDraw(money) {
+        if (this.balance >= money) {
+          this.balance -= money;
+        } else {
+          window.alert("잔액이 부족합니다");
+        }
+      };
+      account.withDraw(500000);
+      console.log(account.checkBalance());
+      console.log(account.balance);
+
+      account.withDraw(3000000);
+      console.log(account.checkBalance());
+
+      account.withDraw(3000000);
+      console.log(account.checkBalance());
+
+      function withDraw(money) {
+        this.balance -= money;
+      }
+
+      function inquiery() {
+        return this.balance;
+      }
+
+      function saveMoney(money) {
+        this.balance += money;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

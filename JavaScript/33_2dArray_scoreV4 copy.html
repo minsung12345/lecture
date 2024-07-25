@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2차원 배열</title>
+    <script>
+      const STU_CNT = 9;
+      let scores = new Array(STU_CNT);
+      scores[0] = ["053024", "홍공동", 77, 88, 90];
+      scores[1] = ["053024", "홍일동", 33, 45, 90];
+      scores[2] = ["053024", "홍이동", 86, 66, 93];
+      scores[3] = ["053024", "홍삼동", 90, 88, 35];
+      scores[4] = ["053024", "홍사동", 70, 68, 65];
+      scores[5] = ["053024", "홍오동", 91, 58, 64];
+      scores[6] = ["053024", "홍육동", 72, 58, 35];
+      scores[7] = ["053024", "홍칠동", 67, 48, 65];
+      scores[8] = ["053024", "홍팔동", 50, 81, 35];
+
+      console.log(scores);
+
+      for (let i = 0; i < scores.length; i++) {
+        scores[i][5] = scores[i][2] + scores[i][3] + scores[i][4];
+      }
+      console.log(scores);
+      for (let i = 0; i < scores.length; i++) {
+        scores[i][6] = (scores[i][5] / 3).toFixed(2);
+        if (scores[i][6] >= 90) {
+          scores[i][7] = "A";
+        } else if (scores[i][6] >= 80) {
+          scores[i][7] = "B";
+        } else if (scores[i][6] >= 70) {
+          scores[i][7] = "C";
+        } else if (scores[i][6] >= 60) {
+          scores[i][7] = "D";
+        } else {
+          scores[i][7] = "F";
+        }
+      }
+      //추가문제 2)
+      //등수를 매겨 보세요.
+      //평균을 기준으로 등수를 매겨 보되,
+      //평균이 같으면 순위는 같다.
+      for (let i = 0; i < scores.length; i++) {
+        let rank = 1;
+        for (let j = 0; j < scores.length; j++) {
+          if (scores[i][6] < scores[j][6]) {
+            rank++;
+          }
+          scores[i][8] = rank;
+        }
+      }
+      let output = "<table border='1'>";
+      output +=
+        "<tr><th>학번</th><th>이름</th><th>수학점수</th><th>국어점수</th><th>영어점수</th><th>총점</th><th>평균</th><th>학점</th><th>등수</th>";
+      for (let i = 0; i < scores.length; i++) {
+        output += "<tr>";
+        for (let j = 0; j < scores[0].length; j++) {
+          output += `<td>${scores[i][j]}</td>`;
+        }
+        ("</tr>");
+      }
+      output += "</table>";
+
+      window.onload = function () {
+        document.getElementById("scoretable").innerHTML = output;
+      };
+      // --------------------------------------
+      // for (let i = 0; i < scores.length - 1; i++) {
+      //   for (let j = i + 1; j < scores.length; j++) {
+      //     if (scores[i][6] < scores[j][6]) {
+      //       temp = scores[i];
+      //       scores[i] = scores[j];
+      //       scores[j] = temp;
+      //     }
+      //   }
+      // }
+
+      function orderScores() {
+        let radios = document.getElementsByName("order");
+        console.log(radios);
+        for (let radio of radios) {
+          console.log(radio.checked);
+          if (radio.checked == true) {
+            console.log(radio.value);
+            order = radio.value;
+          }
+        }
+        if (order == "asc") {
+          for (let i = 0; i < scores.length - 1; i++) {
+            for (let j = i + 1; j < scores.length; j++) {
+              if (scores[i][6] > scores[j][6]) {
+                temp = scores[i];
+                scores[i] = scores[j];
+                scores[j] = temp;
+              }
+            }
+          }
+        } else {
+          for (let i = 0; i < scores.length - 1; i++) {
+            for (let j = i + 1; j < scores.length; j++) {
+              if (scores[i][6] < scores[j][6]) {
+                temp = scores[i];
+                scores[i] = scores[j];
+                scores[j] = temp;
+              }
+            }
+          }
+        }
+        let output = "<table border='1'>";
+        output +=
+          "<tr><th>학번</th><th>이름</th><th>수학점수</th><th>국어점수</th><th>영어점수</th><th>총점</th><th>평균</th><th>학점</th><th>등수</th>";
+        for (let i = 0; i < scores.length; i++) {
+          output += "<tr>";
+          for (let j = 0; j < scores[0].length; j++) {
+            output += `<td>${scores[i][j]}</td>`;
+          }
+          ("</tr>");
+        }
+        output += "</table>";
+        document.getElementById("scoretable").innerHTML = output;
+      }
+
+      // let desctable = "<table border='1'>";
+      // desctable +=
+      //   "<tr><th>학번</th><th>이름</th><th>수학점수</th><th>국어점수</th><th>영어점수</th><th>총점</th><th>평균</th><th>학점</th><th>등수</th>";
+      // for (let i = 0; i < scores.length; i++) {
+      //   desctable += "<tr>";
+      //   for (let j = 0; j < scores[0].length; j++) {
+      //     desctable += `<td>${scores[i][j]}</td>`;
+      //   }
+      //   ("</tr>");
+      // }
+      // desctable += "</table>";
+    </script>
+  </head>
+  <body>
+    <h1>성적표 V4.1</h1>
+    <input type="radio" name="order" id="desc" value="desc" checked />내림차순
+    정렬 <input type="radio" name="order" id="asc" value="asc" />오름차순 정렬
+    <button onclick="orderScores();">정렬</button>
+    <div id="scoretable"></div>
+  </body>
+</html>

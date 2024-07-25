@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        const elt = document.getElementById("child2");
+        console.log(elt);
+        console.log(document.getElementsByClassName("child"));
+
+        const elt1 = document.querySelector(".child:first-child");
+        console.log(elt1);
+        const nodeList = document.querySelectorAll(".child");
+        console.log(nodeList);
+        console.log(document.querySelector(".child"));
+        nodeList.forEach((el) => console.log(el.textContent));
+        console.log(Array.from(nodeList));
+        // console.log(nodeList.reverse());
+        console.log(Array.from(nodeList).reverse());
+        const elt2 = document.querySelector(".child");
+        console.log(elt2.parentElement);
+
+        // Node.previosSibling, Node.nextSibling
+        // 노드의 이전 형제, 다음 형제 노드를 반환
+        console.log(elt2.previousSibling);
+        console.log(elt2.nextSibling);
+
+        console.log(elt2.previousElementSibling);
+        console.log(elt2.nextElementSibling);
+
+        console.log(elt2.previousSibling.parentElement);
+
+        const eltParent = document.querySelector(".parent");
+        console.log(eltParent.firstElementChild);
+      };
+    </script>
+  </head>
+  <body>
+    <div class="parent">
+      <div class="child">content-1</div>
+      text1
+      <div class="child" id="child2">content-2</div>
+      text2
+    </div>
+  </body>
+</html>

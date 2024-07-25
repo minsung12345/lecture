@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jquery를 이용하여 동적으로 행을 추가, 삭제하는 테이블 만들기</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+      $(function () {
+        // 행을 추가하는 함수
+        function addRow() {
+          let newRow = `
+            <tr>
+              <td><input type="text" name="proName" /></td>
+              <td><input type="text" name="prodQty" /></td>
+              <td><input type="text" name="proPrice" /></td>
+              <td><button class="addBtn">+</button></td>
+              <td><button class="remBtn">-</button></td>
+            </tr>`;
+          $("table tbody").append(newRow);
+        }
+
+        // 행을 삭제하는 함수
+        function delRow(button) {
+          $(button).closest("tr").remove();
+        }
+
+        // 초기 행에 대한 이벤트 핸들러 설정
+        $("table").on("click", ".addBtn", function () {
+          addRow();
+        });
+
+        $("table").on("click", ".remBtn", function () {
+          delRow(this);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>상품명</th>
+          <th>수량</th>
+          <th>가격</th>
+          <th>추가</th>
+          <th>삭제</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="text" name="proName" /></td>
+          <td><input type="text" name="prodQty" /></td>
+          <td><input type="text" name="proPrice" /></td>
+          <td><button class="addBtn">+</button></td>
+          <td><button class="remBtn">-</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div><button class="send">전송</button></div>
+  </body>
+</html>

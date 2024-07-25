@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/4e311c76e2.js"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      window.onload = function () {
+        let list = document.getElementById("list");
+        console.log(list);
+
+        list.onclick = function (e) {
+          console.log(e);
+          let target = e.target;
+          console.log(target);
+          target.classList.toggle("text-red");
+        };
+        let save = document.getElementById("save");
+        console.log(save);
+        save.onclick = function (e) {
+          console.log(e);
+          let target = e.target;
+          console.log(target);
+          target.classList.toggle("text-red");
+        };
+      };
+    </script>
+    <style>
+      .text-red {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="list">
+      <li>list1</li>
+      <li>list2</li>
+      <li>list3</li>
+      <li><i class="fa-solid fa-heart"></i></li>
+    </ul>
+    <div id="save">
+      <i class="fa-solid fa-heart"> 좋아요</i>
+      <br />
+      <i class="fa-solid fa-bookmark"> 찜</i>
+    </div>
+  </body>
+</html>
